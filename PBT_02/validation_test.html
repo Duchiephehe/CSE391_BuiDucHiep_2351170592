@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Kiểm tra Validation HTML5</h2>
+    <form action="#">
+        <label>1. Required:</label>
+        <input type="text" required value="">
+
+        <label>2. Email (abc):</label>
+        <input type="email" value="abc">
+
+        <label>3. Number (max 10):</label>
+        <input type="number" min="1" max="10" value="15">
+
+        <label>4. Pattern (10 số):</label>
+        <input type="text" pattern="[0-9]{10}" value="abc123">
+
+        <label>5. Minlength (8 ký tự):</label>
+        <input type="password" minlength="8" value="123">
+
+        <hr>
+        <button type="submit">Submit</button>
+
+    </form>
+    
+</body>
+</html>

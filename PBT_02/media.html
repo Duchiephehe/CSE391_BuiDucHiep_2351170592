@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang giới thiệu Sản phẩm Multimedia</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            border-left: 5px solid #0056b3;
+            padding-left: 10px;
+            color: #333;
+        }
+
+        /* CSS cho Figure và Ảnh sản phẩm */
+        .product-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        figure {
+            margin: 0;
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        figcaption {
+            margin-top: 8px;
+            font-style: italic;
+            color: #555;
+            font-size: 0.9em;
+        }
+
+        /* Video wrapper để giữ tỉ lệ 16:9 cho iframe */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        video,
+        audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"
+            style="display: block; margin: 0 auto;">
+            <circle cx="50" cy="50" r="45" stroke="#0056b3" stroke-width="3" fill="#e1f5fe" />
+            <rect x="30" y="30" width="40" height="40" fill="#0056b3" rx="5" />
+            <text x="50" y="55" font-size="12" text-anchor="middle" fill="white" font-family="Arial">MB IT</text>
+        </svg>
+        <h1>Showcase Sản phẩm Công nghệ</h1>
+    </header>
+
+    <section>
+        <h2>Bộ sưu tập Sản phẩm</h2>
+        <div class="product-gallery">
+            <figure>
+                <img src="Screenshots/del.jpg" alt="Laptop del cao cấp dành cho lập trình viên" loading="lazy"
+                    style="max-width: 100%; height: auto;">
+                <figcaption>Laptop del - Hiệu năng đỉnh cao</figcaption>
+            </figure>
+
+            <figure>
+                <img src="Screenshots/ip15.webp" alt="Điện thoại ip15" loading="lazy"
+                    style="max-width: 100%; height: auto;">
+                <figcaption>Điện thoại ip15 - Công nghệ nhà Táo</figcaption>
+            </figure>
+
+            <figure>
+                <img src="Screenshots/sony.webp" alt="Tai nghe gaming" loading="lazy"
+                    style="max-width: 100%; height: auto;">
+                <figcaption>Tai nghe gaming - Âm thanh sống động</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section>
+        <h2>Video giới thiệu từ YouTube</h2>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/QZfafk9EQxY?si=NO33ssTJdLITGxRh" title="Nhạc Việt Nam"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </section>
+
+    <section>
+        <h2>Video Review trực tiếp</h2>
+        <video controls poster="https://picsum.photos/id/10/800/450">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            <source src="https://www.w3schools.com/html/mov_bbb.webm" type="video/webm">
+            Trình duyệt của bạn không hỗ trợ xem video.
+        </video>
+    </section>
+
+    <section>
+        <h2>Nhạc nền giới thiệu</h2>
+        <p>Thư giãn khi xem sản phẩm:</p>
+        <audio controls>
+            <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+            Trình duyệt của bạn không hỗ trợ phát âm thanh.
+        </audio>
+    </section>
+
+    <footer>
+        <p style="text-align: center; color: green ;">2026 - Bài thực hành Multimedia của Hiệp</p>
+    </footer>
+
+</body>
+
+</html>

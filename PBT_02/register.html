@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký tài khoản E-Commerce</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        fieldset { margin-bottom: 20px; border: 1px solid #ccc; padding: 15px; }
+        legend { font-weight: bold; }
+        label { display: inline-block; width: 150px; margin-bottom: 10px; }
+        input:not([type="radio"]):not([type="checkbox"]), select, textarea { 
+            margin-bottom: 15px; 
+            padding: 5px; 
+            width: 250px; 
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Đăng ký Tài khoản</h2>
+
+    <form action="#" method="POST">
+        
+        <fieldset>
+            <legend>Thông tin cá nhân</legend>
+
+            <label for="fullName">Họ tên:</label>
+            <input type="text" id="fullName" name="fullName" required minlength="2" maxlength="50" placeholder="Nhập họ và tên">
+            <br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="vidu@email.com">
+            <br>
+
+            <label for="phone">Số điện thoại:</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Nhập 10 chữ số" title="Vui lòng nhập đúng 10 chữ số">
+            <br>
+
+            <label for="dob">Ngày sinh:</label>
+            <input type="date" id="dob" name="dob" max="2026-04-23">
+        </fieldset>
+
+        <fieldset>
+            <legend>Tài khoản</legend>
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" pattern="^[a-zA-Z0-9_]{3,20}$" placeholder="3-20 ký tự (chữ, số, _)" title="Chỉ cho phép chữ cái, số, underscore (3-20 ký tự)">
+            <br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" minlength="8" pattern="(?=.*\d)(?=.*[A-Z]).*" placeholder="Tối thiểu 8 ký tự, 1 HOA, 1 số" required>
+            <br>
+
+            <label for="confirmPassword">Xác nhận password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" minlength="8" pattern="(?=.*\d)(?=.*[A-Z]).*" placeholder="Nhập lại password" required>
+        </fieldset>
+
+        <fieldset>
+            <legend>Thông tin giao hàng</legend>
+
+            <label for="city">Thành phố:</label>
+            <select id="city" name="city">
+                <option value="" disabled selected>-- Chọn Tỉnh/Thành phố --</option>
+                <option value="HN">Hà Nội</option>
+                <option value="HCM">Hồ Chí Minh</option>
+                <option value="DN">Đà Nẵng</option>
+                <option value="HP">Hải Phòng</option>
+                <option value="CT">Cần Thơ</option>
+            </select>
+            <br>
+
+            <label for="district">Quận/Huyện:</label>
+            <select id="district" name="district">
+                <option value="" disabled selected>-- Chọn Quận/Huyện --</option>
+                <option value="DD">Đống Đa</option>
+                <option value="CG">Cầu Giấy</option>
+                <option value="Q1">Quận 1</option>
+            </select>
+            <br>
+
+            <label for="address">Địa chỉ chi tiết:</label>
+            <textarea id="address" name="address" rows="3" placeholder="Số nhà, ngõ, tên đường..."></textarea>
+            <br>
+
+            <label>Giới tính:</label>
+            <input type="radio" id="genderMale" name="gender" value="Nam">
+            <label for="genderMale" style="width: auto; margin-right: 15px;">Nam</label>
+            
+            <input type="radio" id="genderFemale" name="gender" value="Nữ">
+            <label for="genderFemale" style="width: auto; margin-right: 15px;">Nữ</label>
+            
+            <input type="radio" id="genderOther" name="gender" value="Khác">
+            <label for="genderOther" style="width: auto;">Khác</label>
+        </fieldset>
+
+        <div style="margin-bottom: 20px;">
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms" style="width: auto;">Tôi đồng ý với các điều khoản và dịch vụ</label>
+        </div>
+
+        <button type="submit">Đăng ký</button>
+        <button type="reset">Làm mới form</button>
+
+    </form>
+
+</body>
+</html>
