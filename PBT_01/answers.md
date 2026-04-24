@@ -173,3 +173,6 @@ Câu 3:
 Form này không khai báo tường minh action và method trong HTML, mà sử dụng JavaScript để xử lý luồng dữ liệu
 input Type:"tel"
 
+# Link drive quay video code và ảnh validate qua w3.org
+https://drive.google.com/drive/folders/1DMW0Eg9_km0NQKkc5mU_CuploecQ7E2_?hl=vi
+![demo](screenshots/w3.png)
