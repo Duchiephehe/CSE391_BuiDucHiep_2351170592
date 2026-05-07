@@ -179,3 +179,14 @@ Dòng color: red bị gạch ngang. Mặc dù ID selector (#featured) rất mạ
 Dòng color: green !important. Nằm ở dưới nhưng không bị gạch, nghĩa là giá trị này đang được áp dụng cuối cùng vào phần tử.
 
 User Agent Stylesheet: Ở dưới cùng có thẻ h2 với các thuộc tính như display: block, font-weight: bold. Đây là CSS mặc định của trình duyệt (Chrome). Nếu không viết CSS, trình duyệt sẽ dùng đống này để hiển thị .Font-size: 1.5em bị gạch ngang  vì bị rule .card .title { font-size: 20px } của đè lên .
+
+## Câu B1
+# Giải trình các loại CSS Selectors được sử dụng trong bài B1
+
+Yêu cầu đề bài Selector đã dùng trong CSS 
+Giải thích
+1. Element selector : body, header, footer, tableTarget trực tiếp vào tên thẻ HTML.
+2. Class selector.active Target vào thẻ có class="active".
+3. ID selector #contact Target vào <aside id="contact">.
+4. Descendant selectornav a hoặc header h1 Target thẻ <a> nằm trong thẻ <nav>.
+5. Pseudo-class:hover, :nth-child(even)Style cho trạng thái di chuột và dòng kẻ bản
