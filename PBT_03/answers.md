@@ -1,3 +1,4 @@
+# Phần A
 ## Câu A1
 1. Inline CSS (Nhúng trong attribute style)
 Ví dụ chuẩn từ bài học: <h1 style="color: #2563eb; font-size: 32px;">Tiêu đề</h1>
@@ -63,3 +64,118 @@ Dựa vào cấu trúc HTML được cung cấp, các selector sẽ chọn các 
 8. .top-bar.dark h1 → Chọn: ShopTLU
 Ảnh kiểm chứng ![demo](screenshots/A2.png)
 
+## Câu A3
+1. Trường hợp mặc định: box-sizing: content-box Trong chế độ này, giá trị width: 400px chỉ áp dụng cho phần nội dung (Content) bên trong cùng. Các lớp còn lại sẽ đắp thêm vào bên ngoài.Chiều rộng hiển thị trên trình duyệt (Visual Width):Đây là phần bạn nhìn thấy (bao gồm cả màu nền và đường viền)
+Chiều rộng hiển thị trên trình duyệt 400px(width) + 20 px * 2 (padding) + 5px * 2(border)=450px
+Không gian chiếm trên trang: 450px{px (chiều rộng hiển thị)} + 10px * 2(margin)= 470px
+
+2. 
+Chiều rộng hiển thị = 400px , Nhờ có box-sizing: border-box, chiều rộng hiển thị  của phần tử được cố định đúng bằng giá trị width  khai báo, bao gồm cả phần đệm và đường viền
+Kích thước content thực tế = 350px . Công thức tính: Width - Padding (trái + phải) - Border (trái + phải) = 400px - (20px * 2) - (5px * 2) = 350px
+Không gian chiếm trên trang = 420px . Công thức tính: Chiều rộng hiển thị + Margin (trái + phải) = 400px + (10 * 2) = 420px
+
+3. Trường hợp 3: Margin collapse (Sụp đổ lề)CSS.box-a { margin-bottom: 25px; }
+.box-b { margin-top: 40px; }
+Khoảng cách giữa box-a và box-b = 40px
+Giải thích tại sao KHÔNG PHẢI 65px :
+Theo cơ chế mặc định của trình duyệt, khi hai lề dọc (top/bottom) của hai khối kề nhau tiếp xúc trực tiếp, chúng sẽ xảy ra hiện tượng sụp đổ lề.Thay vì cộng dồn hai giá trị lại với nhau (25px + 40px = 65px), trình duyệt sẽ thực hiện một phép so sánh và chỉ chọn giá trị lề lớn nhất để áp dụng (trong trường hợp này là 40px của .box-b). Phần lề 25px của .box-a sẽ  hoàn toàn bên trong khoảng không gian 40px đó.
+
+Nâng cao: Nếu .box-a có margin-bottom: -10px và .box-b có margin-top: 40px, khoảng cách thực tế sẽ tính bằng tổng đại số của lề dương lớn nhất và lề âm nhỏ nhất: 40px + (-10px) = 30px 
+
+## Câu A4
+1. Tính specificity score (a, b, c) cho mỗi rule
+Công thức tính Specificity thường được biểu diễn dưới dạng (a, b, c), trong đó:
+
+a: Số lượng ID selectors.
+
+b: Số lượng Class, Attributes, và Pseudo-classes selectors.
+
+c: Số lượng Element và Pseudo-elements selectors.
+Dựa vào công thức trên, ta có điểm số cho từng rule như sau:
+Rule A (p): Chỉ có 1 thẻ element. Điểm: (0, 0, 1)
+Rule B (.price): Chỉ có 1 class.Điểm: (0, 1, 0)
+Rule C (#main-price): Chỉ có 1 ID. Điểm: (1, 0, 0) 
+Rule D (p.price): Có 1 thẻ element (p) và 1 class (.price). Điểm: (0, 1, 1)
+
+2. Element sẽ có màu đỏ (red).
+Giải thích: Trình duyệt sẽ so sánh điểm specificity từ trái sang phải (a-b-c).
+Rule C có điểm a cao nhất (1 > 0), nên tổng thể điểm (1, 0, 0) là lớn nhất trong 4 rules.
+ID selector luôn có sức mạnh áp đảo so với Class hay Element selector. Do đó, CSS của Rule C được ưu tiên áp dụng.
+
+3. Nếu thêm <p class="price" id="main-price" style="color: orange;">, element có màu gì?
+Màu của element: Lần này element sẽ có màu cam (orange).
+
+Giải thích: Khai báo trực tiếp trong thẻ HTML bằng thuộc tính style="..." được gọi là Inline Style. Inline style không nằm trong công thức (a, b, c) mà nó nằm ở một bậc ưu tiên cao hơn hẳn (thường được ví như cột thứ 4: 1, 0, 0, 0). Do đó, nó sẽ ghi đè mọi CSS khai báo bằng ID, Class hay Element trong file .css (ngoại trừ trường hợp có !important).
+
+4. Nếu Rule A thêm !important, element có màu gì? Tại sao?
+Màu của element: Element sẽ có màu đen (black).
+
+Tại sao: Từ khóa !important là một ngoại lệ đặc biệt trong CSS. Khi một thuộc tính được gắn !important, nó sẽ bỏ qua hoàn toàn các quy tắc tính điểm specificity thông thường. Nó sở hữu quyền lực tối cao nhất, ghi đè lên cả ID selector và thậm chí ghi đè lên cả Inline Style. Do đó, dù Rule A chỉ có điểm (0, 0, 1), phần tử vẫn sẽ bị ép lấy màu đen.
+
+# Phần C
+## Câu C1
+1. Tính chiều rộng thực tế của sidebar và content (content-box)
+Theo mặc định (box-sizing: content-box), thuộc tính width chỉ áp dụng cho phần lõi (content). Chiều rộng thực tế chiếm dụng trên màn hình phải cộng thêm cả padding và border (trái + phải).
+
+Chiều rộng thực tế của .sidebar:
+300px (width) + 20px (padding-left) + 20px (padding-right) + 1px (border-left) + 1px (border-right) = 342px
+
+Chiều rộng thực tế của .content:
+660px (width) + 30px (padding-left) + 30px (padding-right) + 1px (border-left) + 1px (border-right) = 722px
+
+2. Giải thích tại sao layout bị vỡ
+Layout bị vỡ (phần content bị rớt xuống dòng) là do một phép toán rất đơn giản:
+
+Tổng không gian cần thiết cho 2 khối: 342px + 722px = 1064px.
+
+Tuy nhiên, .container cha lại bị khóa cứng ở mức: 960px.
+
+Vì 1064px > 960px, không đủ chỗ trống trên cùng một hàng, trình duyệt bắt buộc phải đẩy khối .content (nằm sau) rớt xuống dòng tiếp theo để có đủ không gian hiển thị.
+
+3. Đưa ra 2 cách sửa khác nhau
+Cách 1: Sử dụng border-box (Cách hiện đại, khuyên dùng)Chúng ta ép trình duyệt tính cả padding và border vào trong kích thước khai báo ban đầu. Lúc này, tổng chiều rộng thực tế sẽ tự động khớp đúng với width bạn viết.
+Thêm box-sizing: border-box; vào cả .sidebar và .content.
+(300px + 660px = đúng 960px của container).
+Cách 2: Không dùng border-box (Cách cổ điển, tính toán thủ công)
+Chúng ta giữ nguyên mặc định content-box, nhưng phải gọt bớt thuộc tính width đi một lượng bằng đúng tổng padding và border đã thêm vào.
+Sidebar mới: Cần tổng là 300px ,  width = 300 - 40 (padding) - 2 (border) = 258px.
+Content mới: Cần tổng là 660px , width = 660 - 60 (padding) - 2 (border) = 598px.
+
+## Câu C2
+Phần 1: Trả lời & Giải thích quá trình Cascade + Inheritance
+1. "Sản phẩm A" (<h2 class="title highlight">)
+font-size = 20px
+
+Giải thích: Trình duyệt tìm thấy rule .card .title { font-size: 20px; }. Rule này target trực tiếp vào thẻ có class .title nằm trong .card, nên nó được áp dụng thẳng mà không cần quan tâm đến giá trị kế thừa từ body hay .container.
+
+color = green
+
+Giải thích (Cascade): Có 2 rules tranh chấp màu sắc ở đây: #featured .title { color: red; } và .highlight { color: green !important; }. Dù rule chứa ID (#featured .title) có điểm specificity cực cao (1,1,0), nhưng từ khóa !important trong class  phá vỡ mọi quy tắc tính điểm và giành quyền ưu tiên cao nhất.
+
+2. "Mô tả sản phẩm" (<p> trong card featured)
+color = blue
+
+Giải thích (Inheritance): Thẻ <p> này chịu tác động của rule .card p { color: inherit; }. Từ khóa inherit ép thẻ <p> phải lấy màu của thẻ cha trực tiếp chứa nó. Thẻ cha ở đây là <div class="card" id="featured">.
+
+Kiểm tra CSS của thẻ cha: Thẻ cha có class .card được định nghĩa .card { color: blue; } (không có rule màu nào khác cho #featured). Do đó, thẻ cha màu xanh dương (blue), và <p> kế thừa màu blue này.
+
+3. "Sản phẩm B" (<h2 class="title"> trong card 2)
+font-size = 20px
+
+Giải thích: Tương tự Sản phẩm A, rule .card .title { font-size: 20px; } target trực tiếp vào thẻ này.
+
+color = blue
+
+Giải thích (Inheritance): Thẻ <h2> này không có bất kỳ rule CSS nào trực tiếp set màu (rule #featured .title không khớp vì thẻ này nằm ở card thường). Theo bản chất của CSS, thuộc tính color tự động kế thừa (inherit) từ cha. Thẻ cha trực tiếp của nó là <div class="card"> có .card { color: blue; }. Vì vậy, nó lấy màu blue
+
+4. "Mô tả sản phẩm B" (<p class="highlight">)
+color = green
+
+Giải thích (Cascade): Có 2 rules target trực tiếp vào thẻ này: .card p { color: inherit; } và .highlight { color: green !important; }. Một lần nữa, sự xuất hiện của !important đè bẹp tất cả, ép màu của thẻ thành green, bất chấp việc CSS có chỉ định nó kế thừa (inherit) hay không.
+
+![demo](screenshots/C2.png)
+Dòng color: red bị gạch ngang. Mặc dù ID selector (#featured) rất mạnh, nhưng vẫn phải thua trước !important.
+
+Dòng color: green !important. Nằm ở dưới nhưng không bị gạch, nghĩa là giá trị này đang được áp dụng cuối cùng vào phần tử.
+
+User Agent Stylesheet: Ở dưới cùng có thẻ h2 với các thuộc tính như display: block, font-weight: bold. Đây là CSS mặc định của trình duyệt (Chrome). Nếu không viết CSS, trình duyệt sẽ dùng đống này để hiển thị .Font-size: 1.5em bị gạch ngang  vì bị rule .card .title { font-size: 20px } của đè lên .
