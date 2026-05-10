@@ -35,8 +35,7 @@ body {
     margin: 0 auto;
     background: #eee;
     display: flex;
-    flex-wrap: wrap; /* Dùng flex để các cột nằm ngang */
-    /* Mẹo: Dùng border-box cho toàn bộ layout */
+    flex-wrap: wrap; 
 }
 
 /* .layout-container * {

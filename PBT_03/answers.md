@@ -221,3 +221,31 @@ Cột phải: 250px (width) + 15px (padding trái) + 15px (padding phải) = 280
 👉 Tổng cộng: 280 + 540 + 280 = 1100px.
 
 ## Câu B3
+Danh sách 10 Rules & Specificity Score:
+* -> (0, 0, 0)
+
+p -> (0, 0, 1)
+
+html body p -> (0, 0, 3)
+
+.text -> (0, 1, 0)
+
+p.text -> (0, 1, 1)
+
+.text.highlight -> (0, 2, 0)
+
+p.text.highlight -> (0, 2, 1)
+
+#demo -> (1, 0, 0)
+
+p#demo -> (1, 0, 1)
+
+p#demo.text.highlight -> (1, 2, 1)
+
+Câu hỏi phân tích:
+Element cuối cùng hiển thị màu : Orange (Cam).
+
+Trình duyệt áp dụng quy tắc có điểm Specificity cao nhất. Rule số 10 có điểm (1, 2, 1) vì nó kết hợp cả ID (1), Class (2) và Element (1). Dù rule này nằm ở đầu hay cuối file CSS thì nó vẫn luôn thắng các rule có điểm thấp hơn.
+
+Thay đổi thứ tự rules trong CSS file, kết quả không. Specificity luôn được ưu tiên hàng đầu. Thứ tự viết code (quy tắc Cascade) chỉ có tác dụng khi hai rule có cùng điểm Specificity. Ví dụ, nếu bạn có hai rule cùng là .text { color: green; } và .text { color: blue; }, thì màu nào viết sau sẽ thắng. Nhưng ở đây điểm số khác nhau hoàn toàn nên thứ tự không quan trọng.
+Ảnh kết quả: ![demo](screenshots/caub3.png)
