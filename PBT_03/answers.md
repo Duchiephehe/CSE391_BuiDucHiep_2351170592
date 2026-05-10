@@ -179,7 +179,7 @@ Dòng color: red bị gạch ngang. Mặc dù ID selector (#featured) rất mạ
 Dòng color: green !important. Nằm ở dưới nhưng không bị gạch, nghĩa là giá trị này đang được áp dụng cuối cùng vào phần tử.
 
 User Agent Stylesheet: Ở dưới cùng có thẻ h2 với các thuộc tính như display: block, font-weight: bold. Đây là CSS mặc định của trình duyệt (Chrome). Nếu không viết CSS, trình duyệt sẽ dùng đống này để hiển thị .Font-size: 1.5em bị gạch ngang  vì bị rule .card .title { font-size: 20px } của đè lên .
-
+# Phần B
 ## Câu B1
 # Giải trình các loại CSS Selectors được sử dụng trong bài B1
 
@@ -190,3 +190,34 @@ Giải thích
 3. ID selector #contact Target vào <aside id="contact">.
 4. Descendant selectornav a hoặc header h1 Target thẻ <a> nằm trong thẻ <nav>.
 5. Pseudo-class:hover, :nth-child(even)Style cho trạng thái di chuột và dòng kẻ bản
+
+## Câu B2
+1. Phần 1
+Box Model Lab Answers
+
+- Hộp 1 (content-box): chiều rộng thực tế = 350px ![demo](screenshots/hop1b2.png)
+- Hộp 2 (border-box): chiều rộng thực tế = 300px  ![demo](screenshots/hop2b2.png)
+
+Giải thích: content-box cộng thêm padding và border vào kích thước width, còn border-box bao gồm cả padding và border bên trong kích thước width
+
+2. Phần 2
+Minh chứng cho việc border-box đã tự động gói padding vào bên trong để tổng luôn là 250 + 500 + 250 = 1000px.
+Ảnh minh họa có border-box cột trái 250px ( đã bao gồm 30px padding trái phải ), cột giữa và cột phải cũng tương tự
+![demo](screenshots/bdbox.png)
+![demo](screenshots/borderbox.png)
+Ảnh minh họa không có border-box cột trái 250px ( chưa bao gồm padding trái phải ), cột giữa và cột phải cũng tương tự
+![demo](screenshots/noborderbox.png)
+![demo](screenshots/nobdbox.png)
+
+Khi KHÔNG có border-box (chế độ content-box mặc định):
+
+Cột trái: 250px (width) + 15px (padding trái) + 15px (padding phải) = 280px.
+![demo](screenshots/sidebar.png)
+Cột giữa: 500px (width) + 20px (padding trái) + 20px (padding phải) = 540px.
+![demo](screenshots/content.png)
+Cột phải: 250px (width) + 15px (padding trái) + 15px (padding phải) = 280px.
+![demo](screenshots/ads.png)
+
+👉 Tổng cộng: 280 + 540 + 280 = 1100px.
+
+## Câu B3
