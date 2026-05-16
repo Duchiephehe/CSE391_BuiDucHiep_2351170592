@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positioning Playground - KTPM</title>
+    <link rel="stylesheet" href="positioning.css">
+</head>
+<body>
+
+    <header class="header-fixed">
+        <div class="logo">TLU KTPM</div>
+        <nav class="nav-menu">
+            <a href="#">Trang chủ</a>
+            <a href="#">Sản phẩm</a>
+            <a href="#">Liên hệ</a>
+        </nav>
+    </header>
+
+    <div class="layout-wrapper">
+        
+        <aside class="sidebar-sticky">
+            <h3>Danh mục</h3>
+            <ul>
+                <li><a href="#">Điện thoại di động</a></li>
+                <li><a href="#">Laptop / PC</a></li>
+                <li><a href="#">Phụ kiện IT</a></li>
+            </ul>
+        </aside>
+
+        <main class="content-main">
+            <h2>Danh sách sản phẩm nổi bật</h2>
+            <p>Hãy cuộn chuột xuống dưới để kiểm tra hiệu ứng của Header, Sidebar và Nút lên đầu trang.</p>
+
+            <div class="product-card">
+                <div class="badge-hot">HOT</div>
+                
+                <img src="https://via.placeholder.com/300x200?text=Product+Image" alt="Sản phẩm">
+                <h3>Sản phẩm Demo</h3>
+                <p>Thiết kế hoàn hảo, cấu hình cực mạnh. Giá chỉ từ 10.000.000đ.</p>
+                <button class="btn-buy">Mua ngay</button>
+            </div>
+
+            <div class="dummy-scroll-space">
+                <p>Đang cuộn xuống...</p>
+            </div>
+        </main>
+    </div>
+
+    <a href="#" class="btn-scroll-top">↑</a>
+
+</body>
+</html>

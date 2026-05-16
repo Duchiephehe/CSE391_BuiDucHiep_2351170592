@@ -210,3 +210,7 @@ CSS
 .content { flex: 1; }
 ![demo](screenshots/loi3chuasua.png) 
 ![demo](screenshots/loi3dasua.png) (290px bao gồm cả padding trái phải )
+
+# Phần B
+## Câu B1
+![demo](screenshots/b1.png)
