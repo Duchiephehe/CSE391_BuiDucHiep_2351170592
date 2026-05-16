@@ -1,0 +1,91 @@
+/* Reset cơ bản */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: sans-serif; background-color: #f8fafc; color: #333; padding: 20px; }
+
+.grid-container {
+    display: grid;
+    
+    grid-template-columns: 200px minmax(300px, 1fr) 200px;
+    
+    gap: 20px;
+
+    grid-template-areas: 
+        "header  header  header"
+        "hero    hero    hero"
+        "sidebar main    ads"
+        "footer  footer  footer";
+}
+
+.header  { grid-area: header; }
+.hero    { grid-area: hero; }
+.sidebar { grid-area: sidebar; }
+.main-content { grid-area: main; }
+.ads     { grid-area: ads; }
+.footer  { grid-area: footer; }
+
+
+.header, .footer {
+    background-color: #1e293b;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+.header { display: flex; justify-content: space-between; align-items: center; }
+.footer { text-align: center; }
+
+.hero {
+    background-color: #fff;
+    border: 2px dashed #3b82f6;
+    border-radius: 8px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Chia 3 cột đều nhau */
+    gap: 20px;
+    align-items: center;
+}
+.hero-text {
+    grid-column: span 1; /* Chiếm 1 cột */
+}
+.hero-text h1 { color: #dc2626; font-size: 2.5rem; }
+
+.hero-featured-card {
+    grid-column: span 2; /* Chiếm 2 cột còn lại */
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.hero-featured-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.badge-hot {
+    position: absolute; top: 10px; left: 10px;
+    background: #eab308; color: black; padding: 5px 10px;
+    font-weight: bold; border-radius: 4px;
+}
+
+.sidebar, .ads {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+}
+.sidebar .filter-group { margin-top: 15px; line-height: 1.8; }
+.ads { padding: 0; overflow: hidden; } /* Xóa padding để ảnh tràn viền */
+.ads img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.product-grid {
+    display: grid;
+    /* Yêu cầu: Grid con 3 cột */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+.card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+.card img { width: 100%; border-radius: 4px; margin-bottom: 10px; }
+.card p { color: #dc2626; font-weight: bold; margin-top: 10px; }
