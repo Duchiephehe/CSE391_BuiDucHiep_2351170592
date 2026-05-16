@@ -1,0 +1,291 @@
+# PHẦN A 
+
+## Câu A1 
+
+### 1. Thẻ `<meta viewport>` chuẩn
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+**Giải thích từng thuộc tính:**
+
+| Thuộc tính | Giá trị | Ý nghĩa |
+|---|---|---|
+| `name="viewport"` | — | Xác định đây là thẻ điều khiển vùng hiển thị (viewport) |
+| `width=device-width` | độ rộng thiết bị | Đặt chiều rộng viewport bằng đúng chiều rộng màn hình vật lý của thiết bị, thay vì dùng giá trị mặc định 980px |
+| `initial-scale=1.0` | 1.0 (100%) | Mức zoom ban đầu khi trang tải = 100%, không phóng to/thu nhỏ |
+
+---
+
+### 2. Nếu THIẾU thẻ `<meta viewport>`, iPhone hiển thị như thế nào?
+
+Khi thiếu thẻ `<meta viewport>`, trình duyệt di động (Safari trên iPhone) sẽ:
+
+- **Giả lập viewport 980px** (mặc định) — tức là coi trang có chiều rộng 980px dù màn hình chỉ 375px.
+- **Thu nhỏ (zoom out) toàn bộ trang** để vừa màn hình → chữ và nút cực kỳ nhỏ, không đọc được.
+- Người dùng phải **pinch-to-zoom** để đọc nội dung → trải nghiệm rất tệ.
+- Tất cả media queries dựa trên `device-width` sẽ **không hoạt động đúng**.
+(đối chiếu với  chương 13 Thiếu dòng này: iPhone giả định trang rộng 980px (như desktop) → thu nhỏ lại → chữ bé xíu → UX tệ.)
+
+### 3. Mobile-First vs Desktop-First
+
+**Mobile-First:** Viết CSS mặc định cho màn hình nhỏ trước, sau đó dùng `@media (min-width: ...)` để mở rộng lên màn hình lớn hơn.
+
+**Desktop-First:** Viết CSS mặc định cho màn hình lớn trước, sau đó dùng `@media (max-width: ...)` để thu nhỏ cho màn hình nhỏ hơn.
+
+Ví dụ CSS — breakpoint 768px
+
+**Mobile-First (`min-width`):**
+```css
+/* Mặc định: mobile (< 768px) */
+.container {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* Tablet trở lên (≥ 768px) */
+@media (min-width: 768px) {
+    .container {
+        width: 720px;
+        margin: 0 auto;
+        font-size: 16px;
+    }
+}
+```
+
+**Desktop-First (`max-width`):**
+```css
+/* Mặc định: desktop (≥ 768px) */
+.container {
+    width: 720px;
+    margin: 0 auto;
+    font-size: 16px;
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 767px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+```
+
+#### Tại sao Mobile-First được khuyên dùng?
+
+1. Ưu tiên đúng thực tế: Hơn 60% lưu lượng web đến từ thiết bị di động — thiết kế cho đối tượng đa số trước.
+2. Hiệu năng tốt hơn: Trình duyệt mobile tải CSS tối thiểu cần thiết; không tải rồi ghi đè như Desktop-First.
+3. Tư duy "progressive enhancement": Bắt đầu từ nền tảng tối giản, thêm tính năng dần cho màn hình lớn hơn.
+4. Tránh lỗi layout: Dễ kiểm soát hơn khi mở rộng lên thay vì thu nhỏ xuống.
+5. Đượcc Google ưu tiên: Google sử dụng Mobile-First Indexing → ảnh hưởng SEO.
+
+---
+
+## Câu A2 
+
+### Breakpoints chuẩn (theo Bootstrap 5)
+
+| Tên | Kích thước (px) | Thiết bị đại diện | Lưới sản phẩm |
+|---|---|---|---|
+| xs (Extra small) | `< 576px` | Điện thoại cũ, iPhone SE | 1 cột |
+| sm (Small) | `≥ 576px` | Điện thoại lớn (iPhone Plus, Galaxy) | 1–2 cột |
+| md (Medium) | `≥ 768px` | Tablet (iPad, Samsung Tab) | 2 cột |
+| lg (Large) | `≥ 992px` | Laptop 13–15 inch | 3 cột |
+| xl (Extra large) | `≥ 1200px` | Desktop, Màn hình lớn | 4 cột |
+| xxl (Extra extra large) | `≥ 1400px` | Màn hình 4K, Ultrawide | 4–6 cột |
+
+---
+
+## Câu A3
+
+### Đọc CSS và điền vào bảng.
+
+```css
+.container { width: 100%; padding: 10px; }
+
+@media (min-width: 576px)  { .container { width: 540px;  } }
+@media (min-width: 768px)  { .container { width: 720px;  } }
+@media (min-width: 992px)  { .container { width: 960px;  } }
+@media (min-width: 1200px) { .container { width: 1140px; } }
+```
+
+**Quy tắc:** CSS đọc từ trên xuống, rule cuối cùng thỏa điều kiện sẽ được áp dụng (cascade). Với `min-width`, màn hình đạt **ít nhất** ngưỡng đó mới kích hoạt.
+
+| Chiều rộng màn hình | `.container` width | Giải thích |
+|---|---|---|
+| **375px** (iPhone SE) | `100%` (= 375px) | Không đạt bất kỳ breakpoint nào (< 576px) → dùng style mặc định `width: 100%` |
+| **600px** | `540px` | Đạt `min-width: 576px` → `width: 540px`; chưa đạt 768px |
+| **800px** | `720px` | Đạt `min-width: 768px` → `width: 720px`; chưa đạt 992px |
+| **1000px** | `960px` | Đạt `min-width: 992px` → `width: 960px`; chưa đạt 1200px |
+| **1400px** | `1140px` | Đạt `min-width: 1200px` → `width: 1140px` (rule cuối cùng và cao nhất) |
+
+---
+
+## Câu A4 (5đ) — SCSS Basics
+
+### 4 tính năng chính của SCSS
+
+---
+
+ 1. Variables (Biến — `$`)
+
+Lưu trữ các giá trị tái sử dụng (màu sắc, font, kích thước…) vào biến có tên, tránh lặp lại "magic values" khắp file CSS.
+
+```scss
+// Khai báo biến
+$primary-color: #6366f1;
+$font-size-base: 16px;
+$border-radius: 8px;
+
+// Sử dụng biến
+.button {
+    background-color: $primary-color;
+    font-size: $font-size-base;
+    border-radius: $border-radius;
+}
+
+.link {
+    color: $primary-color; // Dùng lại cùng giá trị
+}
+```
+
+**Lợi ích:** Thay đổi màu chủ đạo chỉ cần sửa 1 chỗ → cập nhật toàn bộ file.
+
+ 2. Nesting (Lồng nhau)
+
+Viết CSS lồng bên trong selector cha, phản ánh cấu trúc HTML và giúp code dễ đọc hơn.
+
+```scss
+// SCSS
+.navbar {
+    background: #1e293b;
+    padding: 16px;
+
+    .nav-link {               // Compile → .navbar .nav-link
+        color: #94a3b8;
+        font-size: 14px;
+
+        &:hover {             // Compile → .navbar .nav-link:hover
+            color: #fff;
+        }
+
+        &.active {            // Compile → .navbar .nav-link.active
+            color: #6366f1;
+            font-weight: bold;
+        }
+    }
+
+    .nav-logo {               // Compile → .navbar .nav-logo
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+}
+```
+
+**Lưu ý:** Không nên lồng quá 3 cấp (tránh tạo ra selector quá dài, khó override).
+
+---
+
+ 3. Mixins (`@mixin` / `@include`)
+
+Định nghĩa một "hàm CSS" tái sử dụng được, có thể nhận tham số.
+
+```scss
+// Khai báo mixin
+@mixin flex-center($direction: row) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+@mixin button-style($bg, $color: #fff) {
+    background-color: $bg;
+    color: $color;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+
+    &:hover { opacity: 0.85; }
+}
+
+// Sử dụng mixin
+.hero {
+    @include flex-center(column);  // Truyền tham số
+    height: 400px;
+}
+
+.btn-primary {
+    @include button-style(#6366f1);
+}
+
+.btn-danger {
+    @include button-style(#ef4444);
+}
+```
+
+---
+
+ 4. `@extend` / Kế thừa
+
+Cho phép một selector **kế thừa toàn bộ style** của selector khác, tránh lặp code.
+
+```scss
+// Định nghĩa "lớp gốc" (placeholder %)
+%card-base {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+// Kế thừa
+.product-card {
+    @extend %card-base;
+    /* Thêm style riêng */
+    max-width: 280px;
+}
+
+.blog-card {
+    @extend %card-base;
+    /* Thêm style riêng */
+    max-width: 400px;
+    border-top: 4px solid #6366f1;
+}
+```
+
+**So sánh `@mixin` vs `@extend`:**
+- `@mixin`: Copy-paste style vào từng selector (file CSS lớn hơn, linh hoạt hơn).
+- `@extend`: Gộp các selector lại thành 1 rule (file CSS nhỏ hơn, nhưng ít linh hoạt hơn).
+
+---
+
+### Tại sao trình duyệt KHÔNG đọc được file `.scss`?
+
+**Lý do:** Trình duyệt chỉ hiểu **CSS thuần** (W3C standard). File `.scss` chứa cú pháp mở rộng như biến `$`, nesting, `@mixin`… không thuộc đặc tả CSS gốc.
+
+**Các bước chuyển SCSS → CSS:**
+
+```
+File .scss  →  [Sass Compiler]  →  File .css  →  Trình duyệt
+```
+
+**Cách thực hiện (chọn 1 trong các cách):**
+
+1. **Sass CLI (Node.js):**
+   ```bash
+   npm install -g sass
+   sass style.scss style.css          # Biên dịch 1 lần
+   sass --watch style.scss style.css  # Tự động biên dịch khi lưu
+   ```
+
+2. **Extension VS Code:** Cài **"Live Sass Compiler"** → nhấn "Watch Sass" ở thanh dưới.
+
+3. **Build tools:** Webpack, Vite, Parcel đều có plugin xử lý SCSS tự động.
+
