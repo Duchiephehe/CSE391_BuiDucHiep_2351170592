@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Flexbox Layout — Navbar & Product Cards Grid" />
+  <title>Flexbox Layout — Navbar & Cards</title>
+  <link rel="stylesheet" href="flexbox.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <!-- Logo — bên trái -->
+    <a href="#" class="navbar__logo" id="logo">
+      <span class="navbar__logo-icon">F</span>
+      FlexShop
+    </a>
+
+    <!-- Menu items — nằm giữa (justify-content) -->
+    <ul class="navbar__menu" id="main-menu">
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#">Products</a></li>
+      <li><a href="#">Categories</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+
+    <!-- Nút đăng nhập / đăng ký — bên phải -->
+    <div class="navbar__auth" id="auth-buttons">
+      <a href="#" class="btn btn--ghost" id="btn-login">Login</a>
+      <a href="#" class="btn btn--primary" id="btn-register">Register</a>
+    </div>
+  </nav>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main">
+    <div class="section-header">
+      <h1 class="section-header__title">Featured Products</h1>
+      <p class="section-header__subtitle">Discover our curated collection of premium items</p>
+    </div>
+
+    <!-- Product Cards Grid — Flexbox wrap, 4 cột -->
+    <div class="products-grid" id="products-grid">
+
+      <!-- Card 1 -->
+      <article class="product-card" id="card-1">
+        <div class="product-card__image">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop" alt="Premium Watch" />
+          <span class="product-card__badge">New</span>
+        </div>
+        <div class="product-card__body">
+          <span class="product-card__category">Accessories</span>
+          <h2 class="product-card__name">Premium Watch</h2>
+          <p class="product-card__desc">Elegant timepiece with minimalist design and sapphire crystal.</p>
+          <div class="product-card__price-row">
+            <span class="product-card__price">$249</span>
+            <span class="product-card__price-old">$349</span>
+          </div>
+          <button class="product-card__buy" id="buy-1">Mua ngay</button>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="product-card" id="card-2">
+        <div class="product-card__image">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop" alt="Wireless Headphones" />
+          <span class="product-card__badge">Hot</span>
+        </div>
+        <div class="product-card__body">
+          <span class="product-card__category">Audio</span>
+          <h2 class="product-card__name">Wireless Headphones</h2>
+          <p class="product-card__desc">Active noise cancellation with 30-hour battery life.</p>
+          <div class="product-card__price-row">
+            <span class="product-card__price">$179</span>
+            <span class="product-card__price-old">$229</span>
+          </div>
+          <button class="product-card__buy" id="buy-2">Mua ngay</button>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="product-card" id="card-3">
+        <div class="product-card__image">
+          <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=400&h=300&fit=crop" alt="Polaroid Camera" />
+        </div>
+        <div class="product-card__body">
+          <span class="product-card__category">Photography</span>
+          <h2 class="product-card__name">Polaroid Camera</h2>
+          <p class="product-card__desc">Instant film camera for capturing memories in retro style.</p>
+          <div class="product-card__price-row">
+            <span class="product-card__price">$99</span>
+          </div>
+          <button class="product-card__buy" id="buy-3">Mua ngay</button>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="product-card" id="card-4">
+        <div class="product-card__image">
+          <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&h=300&fit=crop" alt="Running Shoes" />
+          <span class="product-card__badge">Sale</span>
+        </div>
+        <div class="product-card__body">
+          <span class="product-card__category">Footwear</span>
+          <h2 class="product-card__name">Running Shoes</h2>
+          <p class="product-card__desc">Lightweight performance shoes with responsive cushioning.</p>
+          <div class="product-card__price-row">
+            <span class="product-card__price">$129</span>
+            <span class="product-card__price-old">$189</span>
+          </div>
+          <button class="product-card__buy" id="buy-4">Mua ngay</button>
+        </div>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="product-card" id="card-5">
+        <div class="product-card__image">
+          <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&h=300&fit=crop" alt="Perfume Bottle" />
+        </div>
+        <div class="product-card__body">
+          <span class="product-card__category">Fragrance</span>
+          <h2 class="product-card__name">Luxury Perfume</h2>
+          <p class="product-card__desc">An enchanting blend of floral and woody notes.</p>
+          <div class="product-card__price-row">
+            <span class="product-card__price">$89</span>
+          </div>
+          <button class="product-card__buy" id="buy-5">Mua ngay</button>
+        </div>
+      </article>
+
+      <!-- Card 6 -->
+      <article class="product-card" id="card-6">
+        <div class="product-card__image">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop" alt="Sport Sneakers" />
+          <span class="product-card__badge">New</span>
+        </div>
+        <div class="product-card__body">
+          <span class="product-card__category">Footwear</span>
+          <h2 class="product-card__name">Sport Sneakers</h2>
+          <p class="product-card__desc">Vibrant athletic sneakers built for everyday comfort and style.</p>
+          <div class="product-card__price-row">
+            <span class="product-card__price">$159</span>
+            <span class="product-card__price-old">$199</span>
+          </div>
+          <button class="product-card__buy" id="buy-6">Mua ngay</button>
+        </div>
+      </article>
+
+      <!-- Card 7 -->
+      <article class="product-card" id="card-7">
+        <div class="product-card__image">
+          <img src="https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?w=400&h=300&fit=crop" alt="Smart Speaker" />
+        </div>
+        <div class="product-card__body">
+          <span class="product-card__category">Smart Home</span>
+          <h2 class="product-card__name">Smart Speaker</h2>
+          <p class="product-card__desc">Voice-controlled speaker with room-filling 360° sound.</p>
+          <div class="product-card__price-row">
+            <span class="product-card__price">$69</span>
+          </div>
+          <button class="product-card__buy" id="buy-7">Mua ngay</button>
+        </div>
+      </article>
+
+      <!-- Card 8 -->
+      <article class="product-card" id="card-8">
+        <div class="product-card__image">
+          <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=300&fit=crop" alt="Sunglasses" />
+          <span class="product-card__badge">Hot</span>
+        </div>
+        <div class="product-card__body">
+          <span class="product-card__category">Accessories</span>
+          <h2 class="product-card__name">Designer Sunglasses</h2>
+          <p class="product-card__desc">UV400 protection with polarized lenses and titanium frame.</p>
+          <div class="product-card__price-row">
+            <span class="product-card__price">$199</span>
+            <span class="product-card__price-old">$279</span>
+          </div>
+          <button class="product-card__buy" id="buy-8">Mua ngay</button>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+</body>
+</html>
