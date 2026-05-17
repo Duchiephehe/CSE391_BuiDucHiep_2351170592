@@ -291,6 +291,67 @@ File .scss  →  [Sass Compiler]  →  File .css  →  Trình duyệt
 
 ---
 
+# PHẦN C — PHÂN TÍCH
+
+## Câu C1 (10đ) — Phân tích trang VNExpress.net
+
+Trang phân tích: **https://vnexpress.net**
+
+### Screenshots 3 kích thước
+
+![demo](screenshots/vnexpress-375.png)
+![demo](screenshots/vnexpress-768.png)
+![demo](screenshots/vnexpress-1440.png)
+
+---
+
+### 1. Navigation thay đổi thế nào?
+
+| Kích thước | Mô tả Navigation |
+|---|---|
+| **Mobile (375px)** | Thanh nav thu gọn lại, các mục chuyên mục chính bị ẩn. Xuất hiện icon **hamburger** ở góc trái để mở menu dạng sidebar trượt từ bên trái ra. Logo VNExpress nằm giữa, icon tìm kiếm ở bên phải. |
+| **Tablet (768px)** | Thanh nav hiện một phần các mục chuyên mục (Thời sự, Góc nhìn, Thế giới...) dạng **cuộn ngang** (scroll horizontal). Không còn hamburger, nhưng một số mục phụ bị ẩn. |
+| **Desktop (1440px)** | Thanh nav hiển thị đầy đủ tất cả chuyên mục trên **1 hàng ngang**. Có thêm thanh nav phụ phía trên với ngày tháng, đăng nhập, và các liên kết phụ. |
+
+### 2. Lưới content thay đổi mấy cột?
+
+| Kích thước | Số cột | Chi tiết |
+|---|---|---|
+| **Mobile (375px)** | **1 cột** | Tất cả bài viết xếp dọc, ảnh chiếm full width |
+| **Tablet (768px)** | **2 cột** | Bài chính chiếm khoảng 60%, bài phụ 40%. Một số section vẫn 1 cột |
+| **Desktop (1440px)** | **3 cột** | Bài chính giữa (lớn nhất), sidebar trái có danh mục, sidebar phải có quảng cáo + tin nổi bật |
+
+### 3. Elements nào bị ẩn trên mobile?
+
+- **Sidebar phải** (quảng cáo, tin nổi bật) → hoàn toàn bị ẩn
+- **Thanh nav phụ** phía trên (ngày tháng, đăng nhập) → ẩn
+- **Một số banner quảng cáo lớn** → ẩn hoặc thu nhỏ
+- **Phần bình luận nổi bật** → ẩn trên mobile
+- **Footer chi tiết** → thu gọn lại, chỉ hiện các link chính
+
+### 4. Font size có thay đổi không?
+
+**Có thay đổi.**
+
+| Thành phần | Mobile | Tablet | Desktop |
+|---|---|---|---|
+| Tiêu đề bài chính | ~18px | ~22px | ~24px |
+| Tiêu đề bài phụ | ~15px | ~16px | ~18px |
+| Mô tả ngắn | ~14px | ~14px | ~15px |
+| Body text | ~15px | ~16px | ~17px |
+
+Font size tăng dần theo kích thước màn hình để đảm bảo khả năng đọc phù hợp.
+
+### 5. Media queries trang VNExpress sử dụng
+Các media queries VNExpress dùng (tìm trong DevTools → Styles):
+![demo](screenshots/1280c1.png)
+![demo](screenshots/1129c1.png)
+
+
+**Nhận xét:** VNExpress sử dụng phương pháp **Desktop-First** (dùng `max-width`) — ngược với Mobile-First. Đây là cách tiếp cận phổ biến ở các trang tin tức lớn vì nội dung chính được thiết kế cho desktop trước.
+
+---
+
 # Phần B
 ## Bài B1
 ![demo](screenshots/375b1.png)
