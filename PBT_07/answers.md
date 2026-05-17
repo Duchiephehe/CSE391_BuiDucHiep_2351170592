@@ -210,3 +210,78 @@ const html = `
 - Không cần escape dấu ngoặc kép (`\"`)
 - Hỗ trợ xuống dòng (multi-line) tự nhiên
 - Dễ đọc hơn rất nhiều
+
+---
+
+## Câu C1 (10đ) — Debug JavaScript
+
+### Code gốc có lỗi
+
+```js
+function tinhGiaGiamGia(giaBan, phanTramGiam) {
+    if (phanTramGiam < 0 || phanTramGiam > 100) {
+        return "Phần trăm giảm không hợp lệ"
+    }
+    var giamGia = giaBan * phanTramGiam / 100
+    let giaSauGiam = giaBan - giamGia
+    if (giaSauGiam = 0) {
+        console.log("Sản phẩm miễn phí!")
+    }
+    return giaSauGiam
+}
+const gia = tinhGiaGiamGia("100000", 20)
+console.log("Giá sau giảm: " + gia + "đ")
+const gia2 = tinhGiaGiamGia(50000, 110)
+console.log("Giá: " + gia2)
+for (var i = 0; i < 5; i++) {
+    setTimeout(function() {
+        console.log("Item " + i)
+    }, 1000)
+}
+```
+
+### Danh sách lỗi tìm được
+
+| # | Dòng | Lỗi | Giải thích | Cách sửa |
+|---|---|---|---|---|
+| 1 | `tinhGiaGiamGia("100000", 20)` | Truyền string `"100000"` thay vì số | `"100000" * 20 / 100` tình cờ ra đúng (JS ép kiểu), nhưng nếu dùng `+` sẽ bị nối chuỗi → sai | Đổi thành `100000` (number) hoặc dùng `Number(giaBan)` |
+| 2 | `if (giaSauGiam = 0)` | Dùng `=` (gán) thay vì `===` (so sánh) | `giaSauGiam = 0` gán giá trị 0 cho biến, rồi `if(0)` luôn false. Giá trị bị ghi đè thành 0 | Đổi thành `if (giaSauGiam === 0)` |
+| 3 | `var giamGia` | Dùng `var` thay vì `let/const` | `var` có function scope, dễ gây bug. Nên dùng `const` vì giá trị không thay đổi | Đổi thành `const giamGia = ...` |
+| 4 | Thiếu validate `giaBan` | Không kiểm tra giaBan có phải số không | Nếu truyền string hoặc giá trị âm sẽ cho kết quả sai | Thêm `if (typeof giaBan !== 'number' || giaBan < 0)` |
+| 5 | `phanTramGiam > 100` trả string | Hàm lúc trả number, lúc trả string | Kiểu trả về không nhất quán, khó xử lý kết quả | Nên throw Error hoặc return -1 |
+| 6 | `for (var i = 0; ...)` | **Lỗi ẩn:** `var i` trong vòng lặp + setTimeout | `var` có function scope → khi setTimeout chạy sau 1 giây, vòng lặp đã kết thúc, `i = 5` → in ra "Item 5" cả 5 lần | Đổi `var` thành `let` để có block scope |
+
+### Lỗi ẩn `var` trong vòng lặp — Giải thích chi tiết
+
+```js
+// BUG: var i — in ra "Item 5" x5 lần
+for (var i = 0; i < 5; i++) {
+    setTimeout(function() {
+        console.log("Item " + i) // i luôn = 5 vì var là function scope
+    }, 1000)
+}
+```
+
+**Tại sao?** `var i` tạo 1 biến duy nhất cho cả function. Khi setTimeout callback chạy (sau 1 giây), vòng for đã chạy xong → `i = 5`. Tất cả 5 callback đều tham chiếu tới cùng 1 biến `i`, nên in ra "Item 5" cả 5 lần.
+
+```js
+// FIX: let i — in ra "Item 0", "Item 1", ..., "Item 4"
+for (let i = 0; i < 5; i++) {
+    setTimeout(function() {
+        console.log("Item " + i) // mỗi vòng lặp có biến i riêng
+    }, 1000)
+}
+```
+
+**Tại sao sửa được?** `let` có block scope → mỗi lần lặp tạo 1 biến `i` riêng biệt. Callback tham chiếu đúng giá trị `i` tại thời điểm tạo.
+
+### Code đã sửa hoàn chỉnh
+
+`debug.js`
+
+---
+
+## Câu C2 (10đ) — Bài toán thực tế: Hóa đơn nhà hàng
+
+Xem file `hoa_don.js`
+
