@@ -352,6 +352,189 @@ Các media queries VNExpress dùng (tìm trong DevTools → Styles):
 
 ---
 
+## Câu C2 (10đ) — Thiết kế Responsive Strategy
+
+Thiết kế trang **Đặt bàn nhà hàng** responsive.
+
+### Wireframe — Mobile (< 768px)
+
+```
+┌──────────────────────┐
+│ HEADER               │
+│ [Logo]  [☎ Gọi ngay] │
+├──────────────────────┤
+│ HERO IMAGE           │
+│ (ảnh full width)     │
+├──────────────────────┤
+│ GRID ẢNH MÓN ĂN     │
+│ (2 cột)              │
+│ [img1] [img2]        │
+│ [img3] [img4]        │
+│ [img5] [img6]        │
+├──────────────────────┤
+│ FORM ĐẶT BÀN        │
+│ (full width, xếp dọc)│
+│ [Ngày      ]         │
+│ [Giờ       ]         │
+│ [Số người  ]         │
+│ [Ghi chú   ]         │
+│ [Đặt bàn]            │
+├──────────────────────┤
+│ GOOGLE MAPS          │
+│ (full width)         │
+├──────────────────────┤
+│ FOOTER               │
+└──────────────────────┘
+```
+
+**Mobile:** Số điện thoại thu gọn thành icon ☎. Hero image full width. Grid ảnh 2 cột. Form xếp dọc full width. Bản đồ nằm dưới form.
+
+### Wireframe — Tablet (768px - 1023px)
+
+```
+┌─────────────────────────────────┐
+│ HEADER                           │
+│ [Logo]   [Menu ngang]   [☎ SĐT] │
+├─────────────────────────────────┤
+│ HERO IMAGE (full width)          │
+├─────────────────────────────────┤
+│ GRID ẢNH MÓN ĂN (3 cột)        │
+│ [img1]  [img2]  [img3]          │
+│ [img4]  [img5]  [img6]          │
+├────────────────┬────────────────┤
+│ FORM ĐẶT BÀN  │  GOOGLE MAPS   │
+│ (50%)          │  (50%)         │
+├────────────────┴────────────────┤
+│ FOOTER                           │
+└─────────────────────────────────┘
+```
+
+**Tablet:** Grid ảnh 3 cột. Form và bản đồ nằm **cạnh nhau** (2 cột 50/50).
+
+### Wireframe — Desktop (≥ 1024px)
+
+```
+┌───────────────────────────────────────────────┐
+│ HEADER                                         │
+│ [Logo]     [Menu ngang đầy đủ]     [☎ 0123...] │
+├───────────────────────────────────────────────┤
+│ HERO IMAGE (full width, cao hơn)               │
+├───────────────────────────────────────────────┤
+│ GRID ẢNH MÓN ĂN (3 cột, ảnh lớn hơn)         │
+│ [img1]     [img2]     [img3]                   │
+│ [img4]     [img5]     [img6]                   │
+├──────────────────────────┬────────────────────┤
+│ FORM ĐẶT BÀN            │  GOOGLE MAPS       │
+│ (40%)                    │  (60%)             │
+│ Ngày: [____] Giờ: [____] │                    │
+│ Số người: [__]           │                    │
+│ Ghi chú: [____________]  │                    │
+│ [    Đặt bàn    ]        │                    │
+├──────────────────────────┴────────────────────┤
+│ FOOTER                                         │
+└───────────────────────────────────────────────┘
+```
+
+**Desktop:** Layout không có sidebar riêng. Grid ảnh 3 cột với kích thước lớn hơn. Form + bản đồ chia 2 cột (40/60). Header hiện đầy đủ số điện thoại.
+
+### Trả lời câu hỏi
+
+**Mobile — Những gì bị ẩn? Form nằm đâu?**
+- Số điện thoại đầy đủ bị ẩn → chỉ hiện icon ☎ (bấm vào gọi luôn)
+- Menu nav ẩn → dùng hamburger
+- Form nằm **dưới grid ảnh**, xếp dọc full width
+
+**Tablet — Grid ảnh mấy cột? Bản đồ nằm đâu?**
+- Grid ảnh **3 cột**
+- Bản đồ nằm **cạnh form** (chia 2 cột 50/50)
+
+**Desktop — Layout bao nhiêu cột? Sidebar có không?**
+- Layout chính **1 cột** (full width), phần form + map chia **2 cột** (40/60)
+- **Không có sidebar** riêng biệt — trang đặt bàn đơn giản, không cần sidebar
+
+### CSS Skeleton (Mobile-First)
+
+```css
+/* === Mobile mặc định === */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+}
+
+.nav-menu { display: none; }
+
+.hero img {
+    width: 100%;
+    height: auto;
+}
+
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 16px;
+}
+
+.booking-section {
+    padding: 16px;
+}
+
+.booking-form { margin-bottom: 20px; }
+
+.map-container {
+    width: 100%;
+    height: 300px;
+}
+
+.footer {
+    padding: 20px 16px;
+    text-align: center;
+}
+
+/* === Tablet (≥ 768px) === */
+@media (min-width: 768px) {
+    .nav-menu {
+        display: flex;
+        gap: 10px;
+    }
+
+    .food-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+
+    .booking-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+}
+
+/* === Desktop (≥ 1024px) === */
+@media (min-width: 1024px) {
+    .header { padding: 16px 40px; }
+
+    .food-grid {
+        gap: 20px;
+        padding: 24px 40px;
+    }
+
+    .booking-section {
+        grid-template-columns: 2fr 3fr;
+        padding: 24px 40px;
+    }
+
+    .map-container { height: 400px; }
+}
+```
+
+---
+
+
 # Phần B
 ## Bài B1
 ![demo](screenshots/375b1.png)
