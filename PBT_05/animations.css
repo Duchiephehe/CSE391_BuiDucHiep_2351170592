@@ -1,0 +1,296 @@
+/* === BASE === */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f5f5f5;
+    color: #333;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 1.6rem;
+    color: #6c63ff;
+    margin-bottom: 30px;
+}
+
+.section {
+    max-width: 850px;
+    margin: 0 auto 30px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #e8e8e8;
+}
+
+.section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.mo-ta {
+    font-size: 0.82rem;
+    color: #888;
+    margin-bottom: 16px;
+    font-style: italic;
+}
+
+
+/* ======================================== */
+/* 1. CARD HOVER EFFECT                     */
+/* transition: all 0.3s ease                */
+/* hover: translateY(-8px) + box-shadow     */
+/* ======================================== */
+
+.cards-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 1;
+    min-width: 180px;
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+
+    /* === TRANSITION === */
+    transition: all 0.3s ease;
+}
+
+/* Hover → nâng lên + đổ bóng */
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.card-body {
+    padding: 12px;
+}
+
+.card-body h3 {
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+}
+
+.card-body p {
+    font-size: 0.82rem;
+    color: #777;
+    margin-bottom: 8px;
+}
+
+.price {
+    font-weight: 700;
+    color: #e53935;
+}
+
+
+/* ======================================== */
+/* 2. BUTTON HOVER                          */
+/* Đổi background-color + color mượt mà    */
+/* transform: scale(1.05)                   */
+/* ======================================== */
+
+.buttons-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-mua {
+    padding: 10px 24px;
+    background: #6c63ff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+
+    /* === TRANSITION === */
+    transition: all 0.3s ease;
+}
+
+/* Hover → đổi màu + phóng to nhẹ */
+.btn-mua:hover {
+    background-color: #5a52d5;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* Nút đỏ */
+.btn-do {
+    background: #e53935;
+}
+.btn-do:hover {
+    background-color: #c62828;
+}
+
+/* Nút viền */
+.btn-vien {
+    background: transparent;
+    color: #6c63ff;
+    border: 2px solid #6c63ff;
+}
+.btn-vien:hover {
+    background-color: #6c63ff;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+
+/* ======================================== */
+/* 3. IMAGE ZOOM                            */
+/* overflow: hidden trên container           */
+/* Ảnh transform: scale(1.1) khi hover       */
+/* ======================================== */
+
+.zoom-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.zoom-box {
+    flex: 1;
+    min-width: 180px;
+    border-radius: 8px;
+    cursor: pointer;
+
+    /* overflow hidden — ảnh zoom không bị tràn */
+    overflow: hidden;
+}
+
+.zoom-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+
+    /* === TRANSITION === */
+    transition: transform 0.4s ease;
+}
+
+/* Hover → ảnh phóng to */
+.zoom-box:hover img {
+    transform: scale(1.1);
+}
+
+
+/* ======================================== */
+/* 4. LOADING SPINNER                       */
+/* @keyframes spin xoay vòng                 */
+/* animation: spin 1s linear infinite        */
+/* ======================================== */
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner-row {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #e0e0e0;
+    border-top: 4px solid #6c63ff;
+    border-radius: 50%;
+
+    /* === ANIMATION === */
+    animation: spin 1s linear infinite;
+}
+
+/* Spinner to hơn */
+.spinner-to {
+    width: 55px;
+    height: 55px;
+    border-width: 5px;
+}
+
+/* Spinner đổi màu */
+.spinner-mau {
+    border-color: #fce4ec;
+    border-top-color: #e53935;
+}
+
+
+/* ======================================== */
+/* 5. FADE-IN (CSS only)                    */
+/* @keyframes fadeIn                         */
+/* opacity: 0 → 1, translateY(20px) → 0     */
+/* ======================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fadein-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.fade-box {
+    flex: 1;
+    min-width: 140px;
+    background: #f0f0ff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 18px;
+    text-align: center;
+}
+
+.fade-box h3 {
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.fade-box p {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+/* Animation fade in */
+.fade-in {
+    animation: fadeIn 0.6s ease both;
+}
+
+/* Delay lần lượt — tạo hiệu ứng xuất hiện tuần tự */
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+.delay-4 { animation-delay: 0.8s; }

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Transitions & Animations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+
+    <h1 class="page-title">CSS Transitions &amp; Animations</h1>
+
+    <!-- 1. Card hover effect -->
+    <section class="section">
+        <h2>1. Card Hover Effect</h2>
+        <p class="mo-ta">Hover vào card → translateY(-8px) + box-shadow tăng</p>
+
+        <div class="cards-row">
+            <div class="card" id="card-1">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop" alt="Đồng hồ">
+                </div>
+                <div class="card-body">
+                    <h3>Đồng Hồ Cao Cấp</h3>
+                    <p>Thiết kế tối giản, sang trọng.</p>
+                    <span class="price">2.490.000đ</span>
+                </div>
+            </div>
+
+            <div class="card" id="card-2">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop" alt="Tai nghe">
+                </div>
+                <div class="card-body">
+                    <h3>Tai Nghe Không Dây</h3>
+                    <p>Chống ồn chủ động, pin 30h.</p>
+                    <span class="price">1.790.000đ</span>
+                </div>
+            </div>
+
+            <div class="card" id="card-3">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&h=300&fit=crop" alt="Giày">
+                </div>
+                <div class="card-body">
+                    <h3>Giày Chạy Bộ</h3>
+                    <p>Siêu nhẹ, đệm êm ái.</p>
+                    <span class="price">1.290.000đ</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Button hover -->
+    <section class="section">
+        <h2>2. Button Hover</h2>
+        <p class="mo-ta">Hover → đổi background-color + scale(1.05)</p>
+
+        <div class="buttons-row">
+            <button class="btn-mua" id="btn-1">Mua ngay</button>
+            <button class="btn-mua btn-do" id="btn-2">Thêm giỏ hàng</button>
+            <button class="btn-mua btn-vien" id="btn-3">Xem chi tiết</button>
+        </div>
+    </section>
+
+    <!-- 3. Image zoom -->
+    <section class="section">
+        <h2>3. Image Zoom on Hover</h2>
+        <p class="mo-ta">Container overflow: hidden, ảnh scale(1.1) khi hover</p>
+
+        <div class="zoom-row">
+            <div class="zoom-box" id="zoom-1">
+                <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=400&h=300&fit=crop" alt="Camera">
+            </div>
+            <div class="zoom-box" id="zoom-2">
+                <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&h=300&fit=crop" alt="Nước hoa">
+            </div>
+            <div class="zoom-box" id="zoom-3">
+                <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=300&fit=crop" alt="Kính">
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Loading spinner -->
+    <section class="section">
+        <h2>4. Loading Spinner</h2>
+        <p class="mo-ta">@keyframes spin → border xoay 360 độ, animation: spin 1s linear infinite</p>
+
+        <div class="spinner-row">
+            <div class="spinner" id="spinner-1"></div>
+            <div class="spinner spinner-to" id="spinner-2"></div>
+            <div class="spinner spinner-mau" id="spinner-3"></div>
+        </div>
+    </section>
+
+    <!-- 5. Fade-in khi scroll (CSS only) -->
+    <section class="section">
+        <h2>5. Fade-in Animation (CSS only)</h2>
+        <p class="mo-ta">@keyframes fadeIn: opacity 0 → 1, translateY(20px) → 0</p>
+
+        <div class="fadein-row">
+            <div class="fade-box fade-in delay-1" id="fade-1">
+                <h3>🎯 Phần tử 1</h3>
+                <p>Delay 0.2s</p>
+            </div>
+            <div class="fade-box fade-in delay-2" id="fade-2">
+                <h3>🚀 Phần tử 2</h3>
+                <p>Delay 0.4s</p>
+            </div>
+            <div class="fade-box fade-in delay-3" id="fade-3">
+                <h3>✨ Phần tử 3</h3>
+                <p>Delay 0.6s</p>
+            </div>
+            <div class="fade-box fade-in delay-4" id="fade-4">
+                <h3>💡 Phần tử 4</h3>
+                <p>Delay 0.8s</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
