@@ -1,0 +1,20 @@
+// _mixins.scss — Các mixin tái sử dụng
+
+// Mixin responsive (mobile-first, dùng min-width)
+@mixin respond-to($breakpoint) {
+    @media (min-width: $breakpoint) {
+        @content;
+    }
+}
+
+// Mixin căn giữa bằng flexbox
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// Mixin đổ bóng cho card
+@mixin card-shadow {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}

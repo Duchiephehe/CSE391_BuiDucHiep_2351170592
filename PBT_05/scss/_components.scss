@@ -1,0 +1,184 @@
+// _components.scss — Các component chính
+
+// === Product Card (Nesting + &) ===
+.product-card {
+    background: $white;
+    border-radius: $radius;
+    overflow: hidden;
+    border: 1px solid $border-color;
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-4px);
+        @include card-shadow;
+    }
+
+    .card-image {
+        width: 100%;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+    }
+
+    .card-body {
+        padding: 14px;
+    }
+
+    .card-category {
+        font-size: 0.72rem;
+        color: $primary-color;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-bottom: 4px;
+        display: block;
+    }
+
+    .card-title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #222;
+    }
+
+    .card-desc {
+        font-size: 0.85rem;
+        color: $text-light;
+        margin-bottom: 10px;
+    }
+
+    .card-price {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: $secondary-color;
+        margin-bottom: 12px;
+
+        .old-price {
+            font-size: 0.8rem;
+            color: #aaa;
+            text-decoration: line-through;
+            font-weight: 400;
+            margin-left: $spacing-sm;
+        }
+    }
+}
+
+// === Nút Mua ngay (Nesting + &) ===
+.btn-buy {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: $primary-color;
+    color: $white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: $font-primary;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: $primary-dark;
+        transform: scale(1.02);
+    }
+}
+
+// === Header (Nesting) ===
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 12px $spacing-md;
+    background: $white;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    .logo {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: $primary-color;
+        text-decoration: none;
+    }
+}
+
+// === Sidebar ===
+.sidebar-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: $text-color;
+}
+
+.filter-group {
+    margin-bottom: 14px;
+
+    h4 {
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #444;
+    }
+
+    label {
+        display: block;
+        font-size: 0.85rem;
+        margin-bottom: 4px;
+        color: #555;
+        cursor: pointer;
+    }
+}
+
+.filter-btn {
+    padding: $spacing-sm $spacing-md;
+    background: $primary-color;
+    color: $white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: $font-primary;
+
+    &:hover {
+        background: $primary-dark;
+    }
+}
+
+// === Ads ===
+.ad-item {
+    background: $white;
+    border: 1px solid $border-color;
+    border-radius: $radius;
+    padding: $spacing-md;
+    margin-bottom: 14px;
+    text-align: center;
+
+    p:first-child {
+        font-weight: 700;
+        font-size: 1rem;
+        margin-bottom: 4px;
+    }
+
+    p:last-child {
+        font-size: 0.8rem;
+        color: $text-light;
+    }
+}
+
+// === Footer ===
+.footer {
+    background: $text-color;
+    color: #ccc;
+    text-align: center;
+    padding: 20px $spacing-md;
+    margin-top: 24px;
+    font-size: 0.85rem;
+}

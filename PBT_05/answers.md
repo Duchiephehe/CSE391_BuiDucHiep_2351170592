@@ -297,3 +297,16 @@ File .scss  →  [Sass Compiler]  →  File .css  →  Trình duyệt
 ![demo](screenshots/768b1.png)
 ![demo](screenshots/1200b1.png)
 
+## Bài B3 — Lệnh compile SCSS
+
+```bash
+# Cài Sass
+npm install -g sass
+
+# Compile SCSS thành CSS
+sass scss/style.scss style.css
+
+# Tự động compile khi lưu file
+sass --watch scss/style.scss:style.css
+```
+
