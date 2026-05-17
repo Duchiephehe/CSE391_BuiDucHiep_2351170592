@@ -1,8 +1,3 @@
-/* ============================== */
-/* === RESET & BASE (Mobile) === */
-/* ============================== */
-/* Mobile-First: CSS mặc định viết cho mobile trước */
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 * {
@@ -78,7 +73,7 @@ body {
 }
 
 /* Khi checkbox checked → hiện menu */
-.menu-toggle:checked ~ .nav-menu {
+.menu-toggle:checked~.nav-menu {
     display: flex;
 }
 
@@ -262,10 +257,6 @@ body {
     font-size: 0.85rem;
 }
 
-
-/* ================================ */
-/* === TABLET (min-width: 768px) === */
-/* ================================ */
 @media (min-width: 768px) {
 
     body {
@@ -351,10 +342,6 @@ body {
     }
 }
 
-
-/* =================================== */
-/* === DESKTOP (min-width: 1024px) === */
-/* =================================== */
 @media (min-width: 1024px) {
 
     body {
