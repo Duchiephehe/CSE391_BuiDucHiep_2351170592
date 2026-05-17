@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ShopTLU - Trang sản phẩm responsive">
+    <title>ShopTLU - Sản phẩm</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="responsive.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <a href="#" class="logo" id="logo">ShopTLU</a>
+
+        <!-- Hamburger toggle cho mobile (CSS only) -->
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="hamburger" id="hamburger-btn">&#9776;</label>
+
+        <!-- Nav menu -->
+        <nav class="nav-menu" id="nav-menu">
+            <a href="#">Trang chủ</a>
+            <a href="#">Sản phẩm</a>
+            <a href="#">Danh mục</a>
+            <a href="#">Giới thiệu</a>
+            <a href="#">Liên hệ</a>
+        </nav>
+    </header>
+
+    <!-- MAIN LAYOUT -->
+    <div class="main-layout">
+
+        <!-- SIDEBAR (filter) -->
+        <aside class="sidebar" id="sidebar">
+            <h3 class="sidebar-title">Bộ lọc</h3>
+
+            <div class="filter-group">
+                <h4>Danh mục</h4>
+                <label><input type="checkbox"> Điện thoại</label>
+                <label><input type="checkbox"> Laptop</label>
+                <label><input type="checkbox"> Phụ kiện</label>
+                <label><input type="checkbox"> Thời trang</label>
+            </div>
+
+            <div class="filter-group">
+                <h4>Mức giá</h4>
+                <label><input type="radio" name="price"> Dưới 500K</label>
+                <label><input type="radio" name="price"> 500K - 2 triệu</label>
+                <label><input type="radio" name="price"> Trên 2 triệu</label>
+            </div>
+
+            <button class="filter-btn" id="btn-filter">Áp dụng</button>
+        </aside>
+
+        <!-- PRODUCT GRID -->
+        <main class="product-grid" id="product-grid">
+
+            <!-- Card 1 -->
+            <article class="product-card" id="card-1">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop" alt="Đồng hồ cao cấp">
+                </div>
+                <div class="card-body">
+                    <span class="card-category">Phụ kiện</span>
+                    <h2 class="card-title">Đồng Hồ Cao Cấp</h2>
+                    <p class="card-desc">Đồng hồ thiết kế tối giản, mặt kính sapphire.</p>
+                    <div class="card-price">
+                        2.490.000đ
+                        <span class="old-price">3.490.000đ</span>
+                    </div>
+                    <button class="btn-buy" id="buy-1">Mua ngay</button>
+                </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="product-card" id="card-2">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop" alt="Tai nghe không dây">
+                </div>
+                <div class="card-body">
+                    <span class="card-category">Âm thanh</span>
+                    <h2 class="card-title">Tai Nghe Không Dây</h2>
+                    <p class="card-desc">Chống ồn chủ động, pin 30 giờ liên tục.</p>
+                    <div class="card-price">
+                        1.790.000đ
+                        <span class="old-price">2.290.000đ</span>
+                    </div>
+                    <button class="btn-buy" id="buy-2">Mua ngay</button>
+                </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="product-card" id="card-3">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=400&h=300&fit=crop" alt="Máy ảnh Polaroid">
+                </div>
+                <div class="card-body">
+                    <span class="card-category">Nhiếp ảnh</span>
+                    <h2 class="card-title">Máy Ảnh Polaroid</h2>
+                    <p class="card-desc">Chụp ảnh lấy liền phong cách retro cổ điển.</p>
+                    <div class="card-price">990.000đ</div>
+                    <button class="btn-buy" id="buy-3">Mua ngay</button>
+                </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="product-card" id="card-4">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&h=300&fit=crop" alt="Giày chạy bộ">
+                </div>
+                <div class="card-body">
+                    <span class="card-category">Giày dép</span>
+                    <h2 class="card-title">Giày Chạy Bộ</h2>
+                    <p class="card-desc">Siêu nhẹ, đệm êm, phù hợp chạy bộ hằng ngày.</p>
+                    <div class="card-price">
+                        1.290.000đ
+                        <span class="old-price">1.890.000đ</span>
+                    </div>
+                    <button class="btn-buy" id="buy-4">Mua ngay</button>
+                </div>
+            </article>
+
+            <!-- Card 5 -->
+            <article class="product-card" id="card-5">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&h=300&fit=crop" alt="Nước hoa">
+                </div>
+                <div class="card-body">
+                    <span class="card-category">Nước hoa</span>
+                    <h2 class="card-title">Nước Hoa Cao Cấp</h2>
+                    <p class="card-desc">Hương thơm hoa cỏ và gỗ quyến rũ.</p>
+                    <div class="card-price">890.000đ</div>
+                    <button class="btn-buy" id="buy-5">Mua ngay</button>
+                </div>
+            </article>
+
+            <!-- Card 6 -->
+            <article class="product-card" id="card-6">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop" alt="Giày thể thao">
+                </div>
+                <div class="card-body">
+                    <span class="card-category">Giày dép</span>
+                    <h2 class="card-title">Giày Thể Thao</h2>
+                    <p class="card-desc">Sneaker năng động, phù hợp đi chơi và tập luyện.</p>
+                    <div class="card-price">
+                        1.590.000đ
+                        <span class="old-price">1.990.000đ</span>
+                    </div>
+                    <button class="btn-buy" id="buy-6">Mua ngay</button>
+                </div>
+            </article>
+
+            <!-- Card 7 -->
+            <article class="product-card" id="card-7">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?w=400&h=300&fit=crop" alt="Loa thông minh">
+                </div>
+                <div class="card-body">
+                    <span class="card-category">Smart Home</span>
+                    <h2 class="card-title">Loa Thông Minh</h2>
+                    <p class="card-desc">Điều khiển bằng giọng nói, âm thanh 360 độ.</p>
+                    <div class="card-price">690.000đ</div>
+                    <button class="btn-buy" id="buy-7">Mua ngay</button>
+                </div>
+            </article>
+
+            <!-- Card 8 -->
+            <article class="product-card" id="card-8">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=300&fit=crop" alt="Kính mát">
+                </div>
+                <div class="card-body">
+                    <span class="card-category">Phụ kiện</span>
+                    <h2 class="card-title">Kính Mát Thời Trang</h2>
+                    <p class="card-desc">Chống UV400, gọng titanium siêu nhẹ.</p>
+                    <div class="card-price">
+                        1.990.000đ
+                        <span class="old-price">2.790.000đ</span>
+                    </div>
+                    <button class="btn-buy" id="buy-8">Mua ngay</button>
+                </div>
+            </article>
+
+        </main>
+
+        <!-- ADS BAR -->
+        <aside class="ads-bar" id="ads-bar">
+            <div class="ad-item">
+                <p>🔥 Giảm 50%</p>
+                <p>Chỉ hôm nay!</p>
+            </div>
+            <div class="ad-item">
+                <p>🚚 Free Ship</p>
+                <p>Đơn từ 300K</p>
+            </div>
+            <div class="ad-item">
+                <p>🎁 Quà tặng</p>
+                <p>Đơn từ 1 triệu</p>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="footer">
+        <p>&copy; 2025 ShopTLU — Bùi Đức Hiệp — MSSV: 2351170592</p>
+    </footer>
+
+</body>
+</html>

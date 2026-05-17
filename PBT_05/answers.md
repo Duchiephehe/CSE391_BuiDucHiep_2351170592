@@ -124,7 +124,7 @@ Ví dụ CSS — breakpoint 768px
 
 ---
 
-## Câu A4 (5đ) — SCSS Basics
+## Câu A4 
 
 ### 4 tính năng chính của SCSS
 
@@ -288,4 +288,12 @@ File .scss  →  [Sass Compiler]  →  File .css  →  Trình duyệt
 2. **Extension VS Code:** Cài **"Live Sass Compiler"** → nhấn "Watch Sass" ở thanh dưới.
 
 3. **Build tools:** Webpack, Vite, Parcel đều có plugin xử lý SCSS tự động.
+
+---
+
+# Phần B
+## Bài B1
+![demo](screenshots/375b1.png)
+![demo](screenshots/768b1.png)
+![demo](screenshots/1200b1.png)
 
