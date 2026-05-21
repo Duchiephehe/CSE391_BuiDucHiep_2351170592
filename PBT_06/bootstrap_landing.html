@@ -7,7 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        /* CSS tùy chỉnh chỉ dùng cho ảnh để layout đẹp hơn, không can thiệp vào cấu trúc layout của Bootstrap */
         .carousel-item img {
             height: 450px;
             object-fit: cover;
@@ -28,8 +27,6 @@
     </style>
 </head>
 <body>
-
-    <!-- 1. Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">
@@ -67,7 +64,6 @@
         </div>
     </nav>
 
-    <!-- 2. Hero section: Carousel -->
     <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -77,7 +73,6 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&h=450&fit=crop" class="d-block w-100" alt="Slide 1">
-                <!-- Overlay text -->
                 <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-4 mb-5">
                     <h2 class="fw-bold text-uppercase">Bộ Sưu Tập Mùa Đông</h2>
                     <p class="fs-5">Giảm giá lên đến 50% cho tất cả áo khoác và áo len.</p>
@@ -111,7 +106,6 @@
         </button>
     </div>
 
-    <!-- Main Content -->
     <div class="container my-5" id="products">
         <div class="row mb-4">
             <div class="col-12 text-center">
@@ -120,14 +114,9 @@
             </div>
         </div>
 
-        <!-- 3. Product grid: 4 cột desktop (lg), 2 cột tablet (md), 1 cột mobile (col-12) -->
         <div class="row g-4">
-            
-            <!-- Product 1 -->
             <div class="col-12 col-md-6 col-lg-3">
-                <!-- 4. Product cards -->
                 <div class="card h-100 shadow-sm position-relative border-0 rounded-3 overflow-hidden">
-                    <!-- 5. Badge "Sale" -->
                     <span class="badge bg-danger sale-badge px-3 py-2 fs-6 rounded-pill">SALE 20%</span>
                     <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&h=400&fit=crop" class="card-img-top" alt="Áo thun nữ">
                     <div class="card-body d-flex flex-column">
@@ -136,7 +125,6 @@
                         <div class="mt-auto">
                             <h6 class="text-danger fw-bold mb-3 fs-5">150.000đ <del class="text-secondary small fw-normal ms-2">190.000đ</del></h6>
                             <div class="d-flex justify-content-between gap-2">
-                                <!-- 6. Nút mở Modal "Xem nhanh" -->
                                 <button type="button" class="btn btn-outline-secondary btn-sm w-50" data-bs-toggle="modal" data-bs-target="#quickViewModal">
                                     <i class="fa-solid fa-eye"></i> Xem nhanh
                                 </button>
@@ -147,7 +135,6 @@
                 </div>
             </div>
 
-            <!-- Product 2 -->
             <div class="col-12 col-md-6 col-lg-3">
                 <div class="card h-100 shadow-sm position-relative border-0 rounded-3 overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=400&h=400&fit=crop" class="card-img-top" alt="Áo khoác nam">
@@ -167,7 +154,6 @@
                 </div>
             </div>
 
-            <!-- Product 3 -->
             <div class="col-12 col-md-6 col-lg-3">
                 <div class="card h-100 shadow-sm position-relative border-0 rounded-3 overflow-hidden">
                     <span class="badge bg-warning text-dark sale-badge px-3 py-2 fs-6 rounded-pill">HOT NEW</span>
@@ -188,7 +174,6 @@
                 </div>
             </div>
 
-            <!-- Product 4 -->
             <div class="col-12 col-md-6 col-lg-3">
                 <div class="card h-100 shadow-sm position-relative border-0 rounded-3 overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&h=400&fit=crop" class="card-img-top" alt="Áo sơ mi nam">
@@ -211,7 +196,6 @@
         </div>
     </div>
 
-    <!-- 6. Modal Xem Nhanh Sản Phẩm -->
     <div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content border-0 shadow">
@@ -264,11 +248,9 @@
         </div>
     </div>
 
-    <!-- 7. Footer: 4 cột grid -->
     <footer class="bg-dark text-light pt-5 pb-3 mt-5" id="footer">
         <div class="container">
             <div class="row g-4">
-                <!-- Cột 1 -->
                 <div class="col-12 col-md-6 col-lg-3">
                     <h5 class="text-warning mb-3 fw-bold"><i class="fa-solid fa-shop me-2"></i>HiepStore</h5>
                     <p class="text-secondary small">Thương hiệu thời trang mang đến phong cách hiện đại, năng động. Nơi mua sắm đáng tin cậy của giới trẻ.</p>
@@ -278,7 +260,6 @@
                         <a href="#" class="text-secondary hover-white fs-5"><i class="fa-brands fa-tiktok"></i></a>
                     </div>
                 </div>
-                <!-- Cột 2 -->
                 <div class="col-12 col-md-6 col-lg-3">
                     <h5 class="mb-3 fw-bold">Khám Phá</h5>
                     <ul class="list-unstyled small">
@@ -288,7 +269,6 @@
                         <li class="mb-2"><a href="#" class="text-secondary text-decoration-none hover-white">Bộ sưu tập mới</a></li>
                     </ul>
                 </div>
-                <!-- Cột 3 -->
                 <div class="col-12 col-md-6 col-lg-3">
                     <h5 class="mb-3 fw-bold">Hỗ Trợ Khách Hàng</h5>
                     <ul class="list-unstyled small">
@@ -298,7 +278,6 @@
                         <li class="mb-2"><a href="#" class="text-secondary text-decoration-none hover-white">Bảo mật thông tin</a></li>
                     </ul>
                 </div>
-                <!-- Cột 4 -->
                 <div class="col-12 col-md-6 col-lg-3">
                     <h5 class="mb-3 fw-bold">Liên Hệ</h5>
                     <ul class="list-unstyled text-secondary small">
@@ -308,8 +287,6 @@
                     </ul>
                 </div>
             </div>
-            
-            <!-- Copyright line -->
             <hr class="mt-4 border-secondary">
             <div class="row mt-3">
                 <div class="col-12 text-center text-secondary small">
@@ -318,8 +295,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- Bootstrap JS Bundle (Bao gồm Popper cho dropdowns/modals/tooltips) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
