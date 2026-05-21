@@ -403,3 +403,9 @@ nav {
 - Bootstrap tiết kiệm ~55 dòng CSS cho navbar + card, phát triển nhanh gấp 3-6 lần
 - CSS thuần cho phép kiểm soát tuyệt đối, phù hợp design đặc thù và tối ưu performance
 - Lựa chọn phụ thuộc vào: deadline, yêu cầu design, team size, và performance target
+
+# Phần B
+## Câu B1 
+![demo](screenshots/1440px.png)
+![demo](screenshots/820px.png)
+![demo](screenshots/375px.png)
