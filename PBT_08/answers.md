@@ -130,9 +130,9 @@ console.log(product.specs.ram);        // 16
 
 ---
 
-## PHẦN C — BÀI TẬP THỰC HÀNH
+## PHẦN C 
 
-### Câu C1 (10đ) — Refactor Code
+### Câu C1
 
 Dưới đây là đoạn code đã được refactor cực kỳ ngắn gọn (chỉ với 7 dòng) bằng cách kết hợp Chaining các Array Methods (`filter`, `map`, `sort`), Destructuring và Arrow functions:
 
@@ -153,10 +153,9 @@ const processOrders = (orders) => orders
 
 ---
 
-### Câu C2 (10đ) — Thiết kế API
+### Câu C2
 ![demo](screenshots/cauc2.png)
 Triển khai thư viện JS nhỏ `miniArray` bằng vòng lặp `for` thuần tuý, tái tạo lại logic cốt lõi của các Array methods:
-!
 
 ```javascript
 const miniArray = {
