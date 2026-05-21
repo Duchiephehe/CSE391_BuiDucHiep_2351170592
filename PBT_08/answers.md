@@ -127,3 +127,72 @@ console.log(product.price);            // 25990000 (gốc không thay đổi)
 console.log(product.specs.ram);        // 16
 ```
 *Giải thích (Tại sao lại là 16?):* Mặc dù Spread tạo ra object mới, nhưng nó chỉ là **Shallow Copy (Copy nông)**. Điều này có nghĩa là với các thuộc tính chứa object con (như `specs`), Spread chỉ copy địa chỉ tham chiếu (reference) trong bộ nhớ. Do đó, `copy.specs` và `product.specs` cùng trỏ chung vào một object lồng bên trong. Khi sửa `copy.specs.ram`, thuộc tính tương ứng trên object gốc cũng bị ảnh hưởng.
+
+---
+
+## PHẦN C — BÀI TẬP THỰC HÀNH
+
+### Câu C1 (10đ) — Refactor Code
+
+Dưới đây là đoạn code đã được refactor cực kỳ ngắn gọn (chỉ với 7 dòng) bằng cách kết hợp Chaining các Array Methods (`filter`, `map`, `sort`), Destructuring và Arrow functions:
+
+```javascript
+const processOrders = (orders) => orders
+    .filter(({ status, total }) => status === "completed" && total > 100000)
+    .map(({ id, customer, total }) => ({
+        id, customer, total,
+        discount: total * 0.1,
+        finalTotal: total - (total * 0.1)
+    }))
+    .sort((a, b) => b.finalTotal - a.finalTotal);
+```
+*Giải thích:*
+- Lọc (`filter`) ngay các order thoả mãn `completed` và `total > 100000` với Destructuring tham số đầu vào.
+- Biến đổi (`map`) các phần tử thoả mãn sang dạng object mới có thêm `discount` và `finalTotal`.
+- Sắp xếp giảm dần (`sort`) dựa trên giá trị `finalTotal` vừa tính.
+
+---
+
+### Câu C2 (10đ) — Thiết kế API
+![demo](screenshots/cauc2.png)
+Triển khai thư viện JS nhỏ `miniArray` bằng vòng lặp `for` thuần tuý, tái tạo lại logic cốt lõi của các Array methods:
+!
+
+```javascript
+const miniArray = {
+    map(arr, fn) {
+        let result = [];
+        for (let i = 0; i < arr.length; i++) {
+            result.push(fn(arr[i], i, arr));
+        }
+        return result;
+    },
+    
+    filter(arr, fn) {
+        let result = [];
+        for (let i = 0; i < arr.length; i++) {
+            if (fn(arr[i], i, arr)) {
+                result.push(arr[i]);
+            }
+        }
+        return result;
+    },
+    
+    reduce(arr, fn, initialValue) {
+        // Nếu không có initialValue, gán phần tử đầu tiên làm giá trị khởi tạo
+        let acc = initialValue !== undefined ? initialValue : arr[0];
+        // Nếu có initialValue thì lặp từ index 0, nếu không thì lặp từ index 1
+        let startIndex = initialValue !== undefined ? 0 : 1;
+        
+        for (let i = startIndex; i < arr.length; i++) {
+            acc = fn(acc, arr[i], i, arr);
+        }
+        return acc;
+    }
+};
+
+// Test
+console.log(miniArray.map([1,2,3], x => x * 2));           // Output: [2, 4, 6]
+console.log(miniArray.filter([1,2,3,4], x => x > 2));      // Output: [3, 4]
+console.log(miniArray.reduce([1,2,3,4], (a,b) => a+b, 0)); // Output: 10
+```
