@@ -180,3 +180,226 @@ Breakpoint < 576px    576px      768px      992px      1200px     1400px
 - .container → fixed-width responsive, center
 - .container-fluid → luôn full-width
 - .container-md → hybrid (full-width mobile, fixed từ tablet)
+
+---
+
+# PHẦN C
+
+## Câu C1 
+### 1. Quy trình đổi màu `$primary` từ xanh mặc định sang `#E63946`
+
+**Công cụ cần có:**
+- **Node.js** và **npm** (để chạy Sass compiler)
+- **Sass** (dart-sass): `npm install -g sass` hoặc cài qua dự án
+
+**Các bước thực hiện:**
+
+**Bước 1:** Cài đặt Bootstrap source (SCSS) qua npm:
+```bash
+npm install bootstrap
+```
+
+**Bước 2:** Tạo file SCSS tùy biến, ví dụ `custom.scss`:
+```scss
+// 1. Override biến TRƯỚC khi import Bootstrap
+$primary: #E63946;
+
+// 2. Import toàn bộ Bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap";
+```
+
+**Bước 3:** Compile file SCSS thành CSS:
+```bash
+sass custom.scss custom.css
+```
+
+**Bước 4:** Dùng `custom.css` thay vì CDN Bootstrap trong HTML:
+```html
+<link rel="stylesheet" href="custom.css">
+```
+
+**Lý do phải khai báo biến TRƯỚC `@import`:**
+- Bootstrap SCSS sử dụng cơ chế `!default` — biến chỉ nhận giá trị mặc định **nếu chưa được khai báo trước đó**.
+- Khi ta đặt `$primary: #E63946` trước dòng `@import`, Bootstrap sẽ thấy biến đã có giá trị và bỏ qua giá trị mặc định của nó.
+
+---
+
+### 2. Tại sao KHÔNG nên override trực tiếp `.btn-primary { background: red; }`?
+
+**Cách override trực tiếp (KHÔNG nên):**
+```css
+.btn-primary {
+    background: red;
+}
+```
+
+**Vấn đề của cách này:**
+
+| Vấn đề | Giải thích |
+|--------|-----------|
+| **Không nhất quán** | Chỉ đổi được `.btn-primary`, nhưng các thành phần khác dùng `$primary` (link, badge, alert, border...) vẫn giữ màu xanh cũ |
+| **Cascade conflict** | Phải thêm `!important` hoặc tăng specificity nếu Bootstrap override lại, dễ gây xung đột CSS |
+| **Không maintainable** | Khi Bootstrap cập nhật phiên bản mới, phải tìm lại và sửa tất cả chỗ đã override thủ công |
+| **Thiếu đồng bộ** | Các trạng thái như `:hover`, `:active`, `:focus` của button được tính toán từ `$primary` (làm tối/sáng hơn) — override thủ công phá vỡ logic này |
+| **Không tận dụng SASS** | Bỏ qua toàn bộ hệ thống biến và hàm màu sắc mạnh mẽ mà Bootstrap cung cấp |
+
+**Dùng SASS variables (NÊN làm):**
+```scss
+$primary: #E63946;
+@import "bootstrap/scss/bootstrap";
+```
+→ Chỉ 1 dòng thay đổi, toàn bộ hệ sinh thái Bootstrap (buttons, links, alerts, borders, focus rings...) tự động dùng màu mới.
+
+---
+
+## Câu C2
+
+### Viết CSS thuần: Navbar responsive + Product Card
+
+**CSS thuần — Navbar responsive:**
+```css
+/* === NAVBAR === */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.5rem;
+    background-color: #1a1a2e;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.nav-brand { color: #fff; font-size: 1.25rem; font-weight: 700; text-decoration: none; }
+.nav-menu { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
+.nav-menu a { color: #ccc; text-decoration: none; transition: color 0.2s; }
+.nav-menu a:hover { color: #fff; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger span { display: block; width: 25px; height: 2px; background: #fff; }
+
+@media (max-width: 768px) {
+    .hamburger { display: flex; }
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 56px; left: 0; right: 0;
+        background: #1a1a2e;
+        padding: 1rem 1.5rem;
+        gap: 1rem;
+    }
+    .nav-menu.open { display: flex; }
+}
+
+/* === PRODUCT CARD === */
+.card-container { display: flex; flex-wrap: wrap; gap: 1.5rem; padding: 2rem; }
+.product-card {
+    flex: 1 1 calc(25% - 1.5rem);
+    min-width: 200px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.product-card:hover { transform: translateY(-4px); box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
+.product-card img { width: 100%; height: 200px; object-fit: cover; }
+.card-body { padding: 1rem; }
+.card-title { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+.card-price { color: #E63946; font-weight: 700; margin-bottom: 1rem; }
+.btn-buy {
+    display: block; width: 100%; padding: 0.5rem;
+    background: #E63946; color: #fff; border: none;
+    border-radius: 4px; cursor: pointer; text-align: center;
+}
+.btn-buy:hover { background: #c1121f; }
+
+@media (max-width: 768px) {
+    .product-card { flex: 1 1 100%; }
+}
+```
+**Tổng CSS thuần: ~55 dòng**
+
+---
+
+**Bootstrap version — Navbar responsive + Product Card:**
+```html
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">MyShop</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#">Trang chủ</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Sản phẩm</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Liên hệ</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- PRODUCT CARD -->
+<div class="container my-4">
+  <div class="row g-3">
+    <div class="col-12 col-md-6 col-lg-3">
+      <div class="card h-100 shadow-sm">
+        <img src="product.jpg" class="card-img-top" alt="Sản phẩm">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Tên sản phẩm</h5>
+          <p class="text-danger fw-bold">250.000đ</p>
+          <button class="btn btn-danger mt-auto w-100">Mua ngay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+**CSS Bootstrap cần viết thêm: ~0 dòng** (toàn bộ dùng utility classes)
+
+---
+
+### Bảng so sánh
+
+| Tiêu chí | CSS thuần | Bootstrap 5 |
+|---------|-----------|-------------|
+| **Số dòng CSS** | ~55 dòng | ~0 dòng (dùng utility class) |
+| **Thời gian phát triển** | Chậm hơn (~2-3 giờ) | Nhanh hơn (~30 phút) |
+| **Khả năng tùy biến** | Cao — kiểm soát hoàn toàn | Trung bình — cần SASS để customize sâu |
+| **File size** | Nhỏ (chỉ CSS cần dùng) | Lớn hơn (~200KB nếu dùng CDN đầy đủ) |
+| **Nhất quán UI** | Phụ thuộc dev | Đảm bảo nhất quán hệ thống |
+| **Responsive** | Phải tự viết media query | Tích hợp sẵn, chỉ thêm class |
+| **Học / Onboard** | Cần biết CSS chuyên sâu | Dễ học, docs phong phú |
+| **Browser compat** | Tự xử lý prefix | Bootstrap đã xử lý sẵn |
+
+---
+
+### Khi nào NÊN dùng Bootstrap?
+
+- **Dự án cần phát triển nhanh**: MVP, prototype, hackathon
+- **Team có nhiều trình độ khác nhau**: Bootstrap chuẩn hóa cách viết
+- **Trang admin/dashboard nội bộ**: không cần design riêng
+- **Landing page đơn giản, không cần brand đặc trưng**
+- **Người mới học frontend**: Bootstrap giúp hiểu responsive nhanh
+
+### Khi nào KHÔNG NÊN dùng Bootstrap?
+
+- **Brand design đặc thù**: khi khách hàng yêu cầu UI hoàn toàn riêng biệt
+- **Tối ưu performance**: trang cần load cực nhanh, bundle size nhỏ
+- **Dự án dùng framework CSS khác**: Tailwind, Chakra UI, Material UI...
+- **Khi chỉ cần 1-2 component**: load cả thư viện là lãng phí
+- **Dự án cần SEO cao**: file CSS lớn ảnh hưởng Core Web Vitals
+
+---
+
+## Tóm tắt Phần C
+
+**Tùy biến Bootstrap:**
+- Dùng SASS variables (`$primary: #E63946`) TRƯỚC `@import bootstrap` để override màu sắc toàn hệ thống
+- Không override CSS trực tiếp vì thiếu nhất quán, khó maintain, và phá vỡ hệ thống màu tự động
+
+**CSS thuần vs Bootstrap:**
+- Bootstrap tiết kiệm ~55 dòng CSS cho navbar + card, phát triển nhanh gấp 3-6 lần
+- CSS thuần cho phép kiểm soát tuyệt đối, phù hợp design đặc thù và tối ưu performance
+- Lựa chọn phụ thuộc vào: deadline, yêu cầu design, team size, và performance target
