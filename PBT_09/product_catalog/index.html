@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Product Catalog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="app-header">
+        <div class="header-container">
+            <h1>Tech Catalog</h1>
+            <div class="header-actions">
+                <button id="darkModeToggle" class="btn btn-outline">🌙 Dark Mode</button>
+                <div class="cart">
+                    <span class="cart-icon">🛒 Giỏ hàng</span>
+                    <span id="cartBadge" class="badge">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Controls: Search, Filter, Sort -->
+        <section class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm..." class="form-control">
+            </div>
+            
+            <div id="categoryFilters" class="filter-group">
+                <button class="btn category-btn active" data-category="all">Tất cả</button>
+                <button class="btn category-btn" data-category="phone">Điện thoại</button>
+                <button class="btn category-btn" data-category="laptop">Laptop</button>
+                <button class="btn category-btn" data-category="tablet">Tablet</button>
+                <button class="btn category-btn" data-category="accessory">Phụ kiện</button>
+            </div>
+
+            <div class="sort-box">
+                <select id="sortSelect" class="form-control">
+                    <option value="default">Sắp xếp mặc định</option>
+                    <option value="price-asc">Giá tăng dần</option>
+                    <option value="price-desc">Giá giảm dần</option>
+                    <option value="name-asc">Tên A-Z</option>
+                    <option value="rating-desc">Đánh giá cao nhất</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Product Grid (Empty, filled by JS) -->
+        <section id="catalogContainer" class="product-grid"></section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
