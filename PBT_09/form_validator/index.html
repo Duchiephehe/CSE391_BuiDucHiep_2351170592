@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validator Realtime</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <form id="registerForm" class="form">
+            <h2>Đăng Ký Tài Khoản</h2>
+            
+            <div class="form-group">
+                <label for="username">Họ và tên</label>
+                <div class="input-wrapper">
+                    <input type="text" id="username" placeholder="Nhập họ và tên (2-50 ký tự)">
+                    <span class="status-icon" id="usernameIcon"></span>
+                </div>
+                <small class="error-msg" id="usernameError"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <div class="input-wrapper">
+                    <input type="email" id="email" placeholder="example@domain.com">
+                    <span class="status-icon" id="emailIcon"></span>
+                </div>
+                <small class="error-msg" id="emailError"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Số điện thoại</label>
+                <div class="input-wrapper">
+                    <input type="text" id="phone" placeholder="0901-234-567" maxlength="12">
+                    <span class="status-icon" id="phoneIcon"></span>
+                </div>
+                <small class="error-msg" id="phoneError"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Mật khẩu</label>
+                <div class="input-wrapper">
+                    <input type="password" id="password" placeholder="Nhập mật khẩu">
+                    <span class="status-icon" id="passwordIcon"></span>
+                </div>
+                <div class="strength-meter">
+                    <div class="strength-bar" id="strengthBar"></div>
+                </div>
+                <small class="strength-text" id="strengthText"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Nhập lại mật khẩu</label>
+                <div class="input-wrapper">
+                    <input type="password" id="confirmPassword" placeholder="Nhập lại mật khẩu">
+                    <span class="status-icon" id="confirmPasswordIcon"></span>
+                </div>
+                <small class="error-msg" id="confirmPasswordError"></small>
+            </div>
+
+            <button type="submit" id="submitBtn" disabled>Đăng ký ngay</button>
+        </form>
+    </div>
+
+    <!-- Modal Thông Báo Thành Công -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal-content">
+            <h2>🎉 Đăng ký thành công!</h2>
+            <div class="modal-body" id="modalInfo">
+                <!-- Chèn thông tin bằng JS -->
+            </div>
+            <button class="close-btn" id="closeModalBtn">Đóng</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
