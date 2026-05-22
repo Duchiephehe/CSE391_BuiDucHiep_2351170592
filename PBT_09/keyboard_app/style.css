@@ -1,0 +1,244 @@
+:root {
+    --bg-color: #f5f6fa;
+    --text-color: #2f3640;
+    --primary: #0097e6;
+    --focus-ring: #ff9f43;
+    --surface: #ffffff;
+}
+
+body.dark-theme {
+    --bg-color: #2f3640;
+    --text-color: #f5f6fa;
+    --primary: #00a8ff;
+    --surface: #353b48;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* 
+   Focus Management:
+   Làm nổi bật outline khi dùng phím Tab di chuyển qua các thành phần 
+*/
+*:focus-visible {
+    outline: 3px solid var(--focus-ring) !important;
+    outline-offset: 3px !important;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s, color 0.3s;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+header p {
+    margin-top: 10px;
+}
+
+kbd {
+    background: var(--surface);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-family: monospace;
+    font-size: 14px;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    flex: 1;
+}
+
+/* Gallery Viewer */
+.gallery-viewer {
+    background: var(--surface);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.main-image-container {
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+#mainImage {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.nav-btn {
+    padding: 10px 20px;
+    border: none;
+    background: var(--primary);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: opacity 0.2s;
+}
+
+.nav-btn:hover {
+    opacity: 0.8;
+}
+
+/* Thumbnails */
+.thumbnails-grid {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 10px;
+}
+
+.thumbnail-wrapper {
+    position: relative;
+}
+
+.thumbnail {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.thumbnail.active {
+    border-color: var(--primary);
+}
+
+.thumbnail-number {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 12px;
+    pointer-events: none;
+}
+
+/* Command Palette */
+.palette-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 100px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+}
+
+.palette-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.palette-container {
+    background: var(--surface);
+    width: 600px;
+    max-width: 90%;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    overflow: hidden;
+    transform: translateY(-20px);
+    transition: transform 0.2s;
+}
+
+.palette-overlay.show .palette-container {
+    transform: translateY(0);
+}
+
+.palette-input {
+    width: 100%;
+    padding: 20px;
+    font-size: 18px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background: transparent;
+    color: var(--text-color);
+    outline: none;
+}
+
+.palette-list {
+    list-style: none;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.palette-item {
+    padding: 15px 20px;
+    cursor: pointer;
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-between;
+}
+
+.palette-item.selected {
+    background: var(--primary);
+    color: white;
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #2ecc71;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 9999;
+}
+
+.toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}

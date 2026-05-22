@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Navigation & Accessibility</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Phím tắt & Accessibility</h1>
+        <p>Bấm <kbd>Ctrl</kbd> + <kbd>K</kbd> để mở Command Palette</p>
+        <p>Mũi tên <kbd>←</kbd> <kbd>→</kbd> / Phím số <kbd>1</kbd>-<kbd>9</kbd> / Phím <kbd>Space</kbd> (Slideshow)</p>
+    </header>
+
+    <main class="container">
+        <!-- Main Viewer -->
+        <section class="gallery-viewer" aria-label="Khu vực xem ảnh lớn">
+            <div class="main-image-container">
+                <img id="mainImage" src="" alt="Ảnh phóng to" tabindex="0" aria-label="Ảnh đang xem">
+            </div>
+            
+            <div class="controls">
+                <button id="prevBtn" class="nav-btn" aria-label="Ảnh trước đó (Phím mũi tên trái)">&larr;</button>
+                <button id="playBtn" class="nav-btn" aria-label="Phát hoặc tạm dừng Slideshow (Phím Space)">▶ Play</button>
+                <button id="nextBtn" class="nav-btn" aria-label="Ảnh tiếp theo (Phím mũi tên phải)">&rarr;</button>
+            </div>
+        </section>
+
+        <!-- Thumbnails -->
+        <section class="thumbnails-grid" id="thumbnailsGrid" aria-label="Danh sách ảnh thu nhỏ">
+            <!-- Render via JS -->
+        </section>
+    </main>
+
+    <!-- Command Palette Modal -->
+    <div class="palette-overlay" id="paletteOverlay" role="dialog" aria-modal="true" aria-label="Command Palette">
+        <div class="palette-container">
+            <input type="text" id="paletteInput" class="palette-input" placeholder="Nhập lệnh tìm kiếm..." aria-label="Ô tìm kiếm lệnh">
+            <ul id="paletteList" class="palette-list" role="listbox" aria-label="Danh sách các lệnh">
+                <!-- Render via JS -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Notification Toast (for commands) -->
+    <div id="toast" class="toast" aria-live="polite"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
