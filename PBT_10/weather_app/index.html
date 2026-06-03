@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1><i class="fa-solid fa-cloud-sun-rain"></i> Thời tiết</h1>
+        </header>
+
+        <main>
+            <div class="search-box">
+                <input type="text" id="cityInput" placeholder="Nhập tên thành phố..." autocomplete="off">
+                <button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i> Tìm</button>
+            </div>
+
+            <!-- History Section -->
+            <div class="history-container">
+                <p class="history-title">Lịch sử tìm kiếm:</p>
+                <div id="historyList" class="history-list">
+                    <!-- History tags will be injected here -->
+                </div>
+            </div>
+
+            <!-- States Container -->
+            <div class="state-container">
+                <!-- Loading State -->
+                <div id="loadingState" class="state hidden">
+                    <div class="spinner"></div>
+                    <p>Đang tải thông tin...</p>
+                </div>
+
+                <!-- Error State -->
+                <div id="errorState" class="state hidden">
+                    <i class="fa-solid fa-triangle-exclamation error-icon"></i>
+                    <p id="errorMessage">Không tìm thấy thành phố!</p>
+                </div>
+
+                <!-- Success State -->
+                <div id="successState" class="state hidden weather-card">
+                    <h2 id="cityName">Hà Nội</h2>
+                    <div class="weather-main">
+                        <div id="weatherIcon" class="weather-icon">☀️</div>
+                        <div class="temperature">
+                            <span id="tempValue">25</span>°C
+                        </div>
+                    </div>
+                    <p id="weatherDesc" class="weather-desc">Nắng đẹp</p>
+                    
+                    <div class="weather-details">
+                        <div class="detail-item">
+                            <i class="fa-solid fa-droplet"></i>
+                            <div>
+                                <p>Độ ẩm</p>
+                                <p id="humidityValue" class="bold">80%</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fa-solid fa-wind"></i>
+                            <div>
+                                <p>Gió</p>
+                                <p id="windValue" class="bold">10 km/h</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
